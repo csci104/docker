@@ -6,13 +6,17 @@ if "%1" == "run" (
     exit /b
   )
   @echo running container...
-  docker run -v %work%:/work/ -dt --security-opt seccomp:unconfined --cap-add SYS_PTRACE csci104 >> %container%
+  docker run -v %work%:/work -dt --security-opt seccomp:unconfined --cap-add SYS_PTRACE csci104 >> %container%
+  exit /b
 )
 
 REM batch is fucking garbage
 if not "%1" == "shell" (
   if not "%1" == "kill" (
-    @echo invalid command!
+    @echo this command manages the virtual linux container!
+    @echo   run - start up the container in the background
+    @echo   shell - open a shell in your running container
+    @echo   kill - kill the container in the background
     exit /1
   )
 )
@@ -31,4 +35,6 @@ if "%1" == "shell" (
 
 if "%1" == "kill" (
   docker kill %id%
+  del %container%
+  exit /b
 )

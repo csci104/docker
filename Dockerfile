@@ -3,6 +3,7 @@ FROM alpine:3.8
 # Container
 RUN apk update
 RUN apk add --no-cache bash
+COPY files/.bashrc /root
 
 # C++
 RUN apk add --no-cache build-base
