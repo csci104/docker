@@ -53,7 +53,7 @@ We will add two options to make the command prompt usable:
 Thus, the final command is:
 
 ```bash
-docker exec -it bash
+docker exec -it containerid bash
 ```
 
 ## Stopping the Image

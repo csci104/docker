@@ -1,3 +1,4 @@
 /.idea/
-/setup.sh
-/setup.bat
+/manage.bat
+/manage.sh
+/.container
