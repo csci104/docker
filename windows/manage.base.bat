@@ -6,7 +6,7 @@ if "%1" == "run" (
     exit /b
   )
   @echo running container...
-  docker run -v %work%:/work -dt --security-opt seccomp:unconfined --cap-add SYS_PTRACE csci104 >> %container%
+  docker run -v %work:"=%:/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE csci104 >> %container%
   exit /b
 )
 
