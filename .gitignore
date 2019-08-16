@@ -2,3 +2,4 @@
 /manage.bat
 /manage.sh
 /.container
+.DS_Store

@@ -1,25 +1,29 @@
 # CSCI 104 Docker
 
-This repository contains the Dockerfile and some setup scripts for creating a virtualized container capable of building and running C++ in a standard Linux environment.
-We use this because it serves as a way for graders to guarantee the behavior of compiled binaries; 
-available functionality varies across platforms, so if everyone uses the same machine, or at least a proxy therefore, there will be no issues of it working on a student's computer but not a grader's.
+This repository contains a Dockerfile and a couple of management scripts for creating and using a virtualized Linux container capable of building, running, and debugging C++.
+Using a virtualized container is preferable to a user's local machine because it guarantees consistent compilation and execution of C++ binaries. 
+While compilers and tooling may vary between systems, creating a sealed environment from the exact same components every time ensures that code runs the same for graders as it does students.  
 
-Another reason to use Docker is because it is considerable more lightweight than installing a full virtual machine.
-Instead of needing the facilities for a graphical interface, virtual file system, etc., we can directly mount the work directory on the host machine in the container and interact with it via a single shell.
+But why use Docker over a traditional virtual machine?
+Docker is considerably less resource-intensive than installing a full virtual machine.
+Instead of needing the facilities for a graphical interface, virtual file system, etc., we can mount any directory of the host machine directly in the container and use a shell to run compilation and debugging.
+Development and file management may be done normally on the local machine.
 
 ## Installing the Image
 
-1. Install Docker desktop from [the website](https://www.docker.com/products/docker-desktop).
-2. Install the `csci104` image from DockerHub or build it as described below.
+1. Install Docker desktop from [the website](https://www.docker.com/products/docker-desktop)
+2. Install the `csci104` image from DockerHub or build it as described below
 
 ## Starting the Image
 
-Before we actually run a container with our image, we need to know where to mount the material folder from.
+Before we actually run a container with our image, we need to know where to mount the course material folder from.
 Locate wherever you cloned it to on your computer and get the full path.
-For example, on Windows that path might look like `C:\Users\me\Documents\csci104\`, and on macOS it might look like `/Users/me/Documents/csci104`.
-Now, the base command for running an image is:
+For example, on Windows that path might look like `C:\Users\username\Documents\hw-username\`, and on macOS it might look like `/Users/username/Documents/hw-username`.
+
+The base command for running an image is:
 
 ```bash
+# Don't run this yet
 docker run image
 ```
 
@@ -31,10 +35,10 @@ However, there are several configurations we want to include:
 - `--cap-add SYS_PTRACE` will allow GDB to correctly access executable runtimes
 - `--security-opt seccomp=unconfined` allows memory allocation and debugging to work correctly
 
-Thus, our complete command becomes:
+Thus, our complete command is:
 
 ```bash
-docker run -v /path/to/material/:/work/ -dt --cap-add SYS_PTRACE --security-opt seccomp=unconfined csci104
+docker run -v /Users/username/Documents/hw-username/:/work/ -dt --cap-add SYS_PTRACE --security-opt seccomp=unconfined csci104
 ```
 
 Or, you can make a copy of the provided setup script, `setup.bat` for Windows and `setup.sh` for macOS, and fill in the path to your material folder.
