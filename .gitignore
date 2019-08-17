@@ -1,5 +1,4 @@
-/.idea/
-/manage.bat
-/manage.sh
+/manage*
 /.container
+/.idea
 .DS_Store

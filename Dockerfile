@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10.1
 
 # Container
 RUN apk update
@@ -7,7 +7,7 @@ COPY files/.bashrc /root
 COPY files/praise /bin
 
 # C++
-RUN apk add --no-cache build-base build-essential
+RUN apk add --no-cache build-base
 RUN apk add --no-cache python3 python3-dev
 RUN apk add --no-cache valgrind gdb
 
