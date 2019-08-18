@@ -36,6 +36,7 @@ echo "#!/usr/bin/env bash" >> ${manage}
 echo "" >> ${manage}
 echo "# change this to the directory you want to access in your container" >> ${manage}
 echo "work=${work}" >> ${manage}
+echo "" >> ${manage}
 cat ./unix/manage.base.sh >> ${manage}
 chmod +x ${manage}
 

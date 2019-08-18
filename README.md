@@ -9,7 +9,7 @@ Docker is considerably less resource-intensive than installing a full virtual ma
 Instead of needing the facilities for a graphical interface, virtual file system, etc., we can mount any directory of the host machine directly in the container and use a shell to run compilation and debugging.
 Development and file management may be done normally on the local machine.
 
-## Setting things up
+## Setup
 
 First, install Docker desktop from [the website](https://www.docker.com/products/docker-desktop).
 After that, a setup script is provided for both Windows- and Unix-based systems.
