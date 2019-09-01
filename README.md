@@ -9,6 +9,21 @@ Docker is considerably less resource-intensive than installing a full virtual ma
 Instead of needing the facilities for a graphical interface, virtual file system, etc., we can mount any directory of the host machine directly in the container and use a shell to run compilation and debugging.
 Development and file management may be done normally on the local machine.
 
+## Important Note
+
+If you're using Docker and Virtual Box as a fallback **on Windows**, please be aware of what you'll need to do to switch between the two systems.
+Because Docker requires that Windows Hyper-V be on and Docker requires Hyper-V to be off, you may have to toggle this setting to switch between development environments.
+
+- For Docker: Hypervisor **ON**
+- For VirtualBox: Hypervisor **OFF**
+ 
+Here's how you can manage that setting:
+
+1. Press `<Windows key + X>` and search `Hyper-V`
+2. Select the link to `Turn Windows Features On/Off`
+3. Check or Uncheck the box by Windows Hyper-V to turn this on or off in the list
+4. Restart computer for changes to take effect
+
 ## Setup
 
 First, install Docker desktop from [the website](https://www.docker.com/products/docker-desktop).
@@ -99,25 +114,3 @@ Now, simply run the Docker kill command with that ID:
 ```bash
 docker kill containerid
 ```
-
-### Toggling Hyper-V for Windows Users
-
-If you're using Docker and Virtual Box as a fallback, please be aware of what 
-you'll need to do to switch between the two systems. Because Docker requires that
-Windows Hyper-V be on and Docker requires Hyper-V to be off, you may have to toggle 
-this setting to switch between development environments.
-
- 
-Docker: Hypervisor **ON**
-VirtualBox: Hypervisor **OFF**
- 
-Here's how you can do that on Windows:
- 
-- Press `<Windows key + X>` and search `Hyper-V`
-
-- Select the link to `Turn Windows Features On/Off`
-
-- Check or Uncheck the box by Windows Hyper-V to turn this on or off in the list.
-
-- Restart computer for changes to take effect.
-
