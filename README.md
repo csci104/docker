@@ -11,8 +11,8 @@ Development and file management may be done normally on the local machine.
 
 ## Setup
 
-First, install Docker desktop from [the website](https://www.docker.com/products/docker-desktop).
-After that, a setup script is provided for both Windows- and Unix-based systems.
+First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
+Once done, **clone this repository**, which contains a setup script for both Windows- and Unix-based systems.
 Running it will build the the CSCI 104 docker image and produce a management command line executable.
 
 On macOS in Terminal, run the respective setup script:
