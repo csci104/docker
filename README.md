@@ -1,28 +1,13 @@
 # CSCI 104 Docker
 
 This repository contains a Dockerfile and a couple of management scripts for creating and using a virtualized Linux container capable of building, running, and debugging C++.
-Using a virtualized container is preferable to a user's local machine because it guarantees consistent compilation and execution of C++ binaries. 
-While compilers and tooling may vary between systems, creating a sealed environment from the exact same components every time ensures that code runs the same for graders as it does students.  
+Using a virtualized container is preferable to a user's local machine because it guarantees consistent compilation and execution of C++ binaries.
+While compilers and tooling may vary between systems, creating a sealed environment from the exact same components every time ensures that code runs the same for graders as it does students.
 
 But why use Docker over a traditional virtual machine?
 Docker is considerably less resource-intensive than installing a full virtual machine.
 Instead of needing the facilities for a graphical interface, virtual file system, etc., we can mount any directory of the host machine directly in the container and use a shell to run compilation and debugging.
 Development and file management may be done normally on the local machine.
-
-## Important Note
-
-If you're using Docker and Virtual Box as a fallback **on Windows**, please be aware of what you'll need to do to switch between the two systems.
-Because Docker requires that Windows Hyper-V be on and Docker requires Hyper-V to be off, you may have to toggle this setting to switch between development environments.
-
-- For Docker: Hypervisor **ON**
-- For VirtualBox: Hypervisor **OFF**
- 
-Here's how you can manage that setting:
-
-1. Press `<Windows key + X>` and search `Hyper-V`
-2. Select the link to `Turn Windows Features On/Off`
-3. Check or Uncheck the box by Windows Hyper-V to turn this on or off in the list
-4. Restart computer for changes to take effect
 
 ## Setup
 
@@ -78,11 +63,12 @@ However, there are several configurations we want to include:
 - `-t` allocates a command prompt for us to access when we interact with the container
 - `--cap-add SYS_PTRACE` will allow GDB to correctly access executable runtimes
 - `--security-opt seccomp=unconfined` allows memory allocation and debugging to work correctly
+- `--name csci104` gives the container a name to reference in other docker commands
 
 Thus, our complete command is:
 
 ```bash
-docker run -v /Users/username/Documents/hw-username/:/work/ -dt --cap-add SYS_PTRACE --security-opt seccomp=unconfined csci104
+docker run -v /Users/username/Documents/hw-username/:/work/ -dt --cap-add SYS_PTRACE --security-opt seccomp=unconfined --name csci104 csci104
 ```
 
 Or, you can make a copy of the provided setup script, `setup.bat` for Windows and `setup.sh` for macOS, and fill in the path to your material folder.
@@ -92,7 +78,7 @@ After that, simply running that script in the command line will correctly run th
 
 ### Accessing the Command Line
 
-Finally, to access the command line of the container you've started, we want to use the `exec` command. 
+Finally, to access the command line of the container you've started, we want to use the `exec` command.
 We will add two options to make the command prompt usable:
 
 - `-i` allows the `exec` to be interactive
@@ -101,7 +87,7 @@ We will add two options to make the command prompt usable:
 Thus, the final command is:
 
 ```bash
-docker exec -it containerid bash
+docker exec -it csci104 bash
 ```
 
 ### Stopping the Image
@@ -113,4 +99,10 @@ Now, simply run the Docker kill command with that ID:
 
 ```bash
 docker kill containerid
+```
+
+Or, if you ran the image with the `--name` flag, you can use its name:
+
+```bash
+docker kill csci104
 ```
