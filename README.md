@@ -36,7 +36,7 @@ The `manage` script provides three commands.
 To run it, use the following command on macOS:
 
 ```bash
-./manage command
+./manage.sh command
 ```
 
 And on Windows:
