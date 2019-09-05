@@ -54,7 +54,8 @@ There are three commands you can run through the manage script.
 
 ## Details
 
-The above script should handle standard the standard use scenarios for the docker environment.
+**Note: everything you need is provided above.**
+The `manage` script should handle standard use-scenarios for the docker environment.
 However, if you're looking to fix issues you're having with the system or are interested in how it works, the following sections provide a thorough explanation of the three main commands used to manage the container.
 
 ### Starting the Image
