@@ -14,16 +14,15 @@ Development and file management may be done normally on the local machine.
 First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
 Once done, **clone this repository**, which contains a setup script for both Windows- and Unix-based systems.
 Running it will build the the CSCI 104 docker image and produce a management command line executable.
-
 On macOS in Terminal, run the respective setup script:
 
-```
+```bash
 ./unix/setup.sh
 ```
 
 On Windows in CMD, the process is similar:
 
-```
+```cmd
 .\windows\setup
 ```
 
@@ -31,12 +30,27 @@ When prompted, provide the directory in your local machine you wish to be access
 For example, if you cloned your homework directory to `/Users/username/Documents/hw-username` or `C:\Users\username\Documents\hw-username`, enter that.
 A management script should appear in the root directory of this repository.
 
+## Manage
+
 The `manage` script provides three commands.
-The first, `run`, starts the container up in the background.
-The container should continue running until you shut down your computer, exit docker, or kill the container manually.
-Next is `shell`, which simply opens a shell inside the virtual machine.
-This is where you can run standard linux commands, such as `g++` or `valgrind`.
-The last is `kill`, which manually shuts down the virtual container.
+To run it, use the following command on macOS:
+
+```bash
+./manage command
+```
+
+And on Windows:
+
+```cmd
+.\manage command
+```
+
+There are three commands you can run through the manage script.
+- The first, `run`, starts the container up in the background.
+  The container should continue running until you shut down your computer, exit docker, or kill the container manually.
+- Next is `shell`, which simply opens a shell inside the virtual machine.
+  This is where you can run standard linux commands, such as `g++` or `valgrind`.
+- The last is `kill`, which manually shuts down the virtual container.
 
 ## Details
 
