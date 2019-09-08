@@ -121,3 +121,8 @@ Or, if you ran the image with the `--name` flag, you can use its name:
 ```bash
 docker kill csci104
 ```
+
+### Appendix: Valgrind Suppression
+
+To determine the correct valgrind suppression in the future, refer to [this manual](https://wiki.wxwidgets.org/Valgrind_Suppression_File_Howtohttps://wiki.wxwidgets.org/Valgrind_Suppression_File_Howto).
+Running it on a sufficiently complex piece of leak-free code will yield most of the necessary configurations.
