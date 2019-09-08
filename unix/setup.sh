@@ -3,7 +3,7 @@
 manage="./manage.sh"
 
 # go to docker folder
-cd "$(cd "$(dirname $(dirname "${BASH_SOURCE[0]}"))" >/dev/null 2>&1 && pwd)"
+cd "$(cd "$(dirname "$(dirname "${BASH_SOURCE[0]}")")" || return >/dev/null 2>&1 && pwd)" || return
 
 # check for docker on path
 echo "looking for docker..."
@@ -18,26 +18,28 @@ docker build -t csci104 -f ./Dockerfile . || exit $?
 
 # get mount point
 echo "creating manager script..."
-read -p "select a directory to mount: " work
+read -r -p "select a directory to mount: " work
 
 while [[ ! -d "${work}" ]]; do
   echo "invalid directory!"
-  read -p "select a directory to mount: " work
+  read -r -p "select a directory to mount: " work
 done
 
 # get absolute path of directory
-work="$(cd "${work}"; pwd -P)"
+work="$(cd "${work}" || return; pwd -P)"
 echo "mount set, this can be changed later..."
 
 # create manage scripts
 echo "creating manager script..."
 rm ${manage} 2> /dev/null
-echo "#!/usr/bin/env bash" >> ${manage}
-echo "" >> ${manage}
-echo "# change this to the directory you want to access in your container" >> ${manage}
-echo "work=${work}" >> ${manage}
-echo "" >> ${manage}
-cat ./unix/manage.base.sh >> ${manage}
+{
+  echo "#!/usr/bin/env bash";
+  echo ""
+  echo "# change this to the directory you want to access in your container"
+  echo "work=${work}"
+  echo ""
+  cat ./unix/manage.base.sh
+} >> ${manage};
 chmod +x ${manage}
 
 echo "done!"

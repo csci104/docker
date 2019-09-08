@@ -1,2 +1,2 @@
-export PS1="root@docker:\$(pwd) "
+export PS1="root@docker:\$(pwd) $ "
 cd /work

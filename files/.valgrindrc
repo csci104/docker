@@ -1,1 +1,1 @@
---suppressions=/home/cs104/.valgrind.gcc.supp
+--suppressions=/root/.valgrind.gcc.supp
