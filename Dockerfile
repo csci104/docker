@@ -5,6 +5,8 @@ RUN apk update
 RUN apk add --no-cache bash
 COPY files/.bashrc /root
 COPY files/praise /bin
+COPY files/.valgrind.gcc.supp /root
+COPY files/.valgrindrc /root
 
 # C++
 RUN apk add --no-cache build-base
