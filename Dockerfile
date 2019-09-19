@@ -15,6 +15,7 @@ RUN apk add --no-cache nano
 RUN apk add --no-cache build-base
 RUN apk add --no-cache python3 python3-dev
 RUN apk add --no-cache valgrind gdb
+RUN apk add --no-cache clang llvm
 
 # Grading
 RUN apk add --no-cache git
