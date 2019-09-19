@@ -43,7 +43,7 @@ set /p id=< %container%
 exit /b 0
 
 :docker_run_command
-docker run -v %work%:/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE csci104 >> %container%
+docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE csci104 >> %container%
 exit /b 0
 
 :docker_run

@@ -12,7 +12,7 @@ COPY files/.valgrindrc /root
 RUN apk add --no-cache nano
 
 # C++
-RUN apk add --no-cache build-base
+RUN apk add --no-cache build-base cmake
 RUN apk add --no-cache python3 python3-dev
 RUN apk add --no-cache valgrind gdb
 RUN apk add --no-cache clang llvm
