@@ -17,6 +17,13 @@ RUN apk add --no-cache python3 python3-dev
 RUN apk add --no-cache valgrind gdb
 RUN apk add --no-cache clang llvm
 
+# Legacy gtest stuff for labs
+RUN apk add --no-cache gtest gtest-dev
+
+# Make expected directory structure to link for lab makefiles
+RUN mkdir -p /usr/local/opt/gtest/include/
+RUN ln -s /usr/include/ /usr/local/opt/gtest/include/
+
 # Grading
 RUN apk add --no-cache git
 RUN python3 -m pip install --upgrade pip
