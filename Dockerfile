@@ -27,4 +27,4 @@ RUN ln -s /usr/include/ /usr/local/opt/gtest/include/
 # Grading
 RUN apk add --no-cache git
 RUN python3 -m pip install --upgrade pip
-# RUN python3 -m pip install git+https://github.com/csci104/grade.git
+RUN python3 -m pip install git+https://github.com/csci104/grade.git

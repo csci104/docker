@@ -3,9 +3,14 @@ container="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)/.contai
 function read_container() {
   if [[ -f ${container} ]]; then
     id=$(<"${container}")
+    if [[ -z ${id} ]]; then
+      echo "invalid container file, restart..."
+      rm "${container}"
+      exit 1
+    fi
   else
     echo "a container doesn't seem to be running..."
-    exit
+    exit 1
   fi
 }
 
