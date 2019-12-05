@@ -28,8 +28,10 @@ function docker_run() {
   if [[ -f ${container} ]]; then
     echo "a container seems to be running, use the kill command"
   else
-    if docker_run_command; then
+    if ! docker_run_command; then
+      echo "startup failed, removing container"
       rm "${container}"
+      exit 1
     fi
     echo "container is running!"
   fi
@@ -42,13 +44,14 @@ function docker_shell() {
 
 function docker_kill() {
   read_container
-  docker kill "${id}" > /dev/null
+  docker kill "${id}"
   rm "${container}"
   echo "container killed!"
 }
 
 if [[ $1 = "run" ]]; then
   docker_run
+  exit $?
 elif [[ $1 = "shell" ]]; then
   docker_shell
 elif [[ $1 = "kill" ]]; then
