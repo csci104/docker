@@ -1,3 +1,9 @@
+if [[ -z $work ]] || [[ ! -d "${work}" ]]; then
+  work=""
+  echo "no work directory was defined"
+  exit 1
+fi
+
 container="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)/.container"
 
 function read_container() {
@@ -23,7 +29,7 @@ function docker_run() {
     echo "a container seems to be running, use the kill command"
   else
     if docker_run_command; then
-      rm "{container}"
+      rm "${container}"
     fi
     echo "container is running!"
   fi
@@ -36,8 +42,9 @@ function docker_shell() {
 
 function docker_kill() {
   read_container
-  docker kill "${id}"
+  docker kill "${id}" > /dev/null
   rm "${container}"
+  echo "container killed!"
 }
 
 if [[ $1 = "run" ]]; then
