@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pip3 uninstall -y curricula
+pip3 install git+https://github.com/csci104/curricula

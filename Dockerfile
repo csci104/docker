@@ -1,30 +1,30 @@
 FROM alpine:3.10.1
-
-# Container
 RUN apk update
-RUN apk add --no-cache bash
-COPY files/.bashrc /root
-COPY files/praise /bin
-COPY files/.valgrind.gcc.supp /root
-COPY files/.valgrindrc /root
+
+# Scripts and configuration
+COPY files/root/* /root/
+COPY files/bin/* /bin/
 
 # Basic stuff
-RUN apk add --no-cache nano
+RUN apk add bash
+RUN apk add nano
 
 # C++
-RUN apk add --no-cache build-base cmake
-RUN apk add --no-cache python3 python3-dev
-RUN apk add --no-cache valgrind gdb
-RUN apk add --no-cache clang llvm
+RUN apk add cmake
+RUN apk add build-base
+RUN apk add valgrind
+RUN apk add gdb
+RUN apk add llvm
+RUN apk add clang
 
-# Legacy gtest stuff for labs
-RUN apk add --no-cache gtest gtest-dev
-
-# Make expected directory structure to link for lab makefiles
+# Legacy gtest stuff for labs, make expected directory structure to link for lab makefiles
+RUN apk add gtest gtest-dev
 RUN mkdir -p /usr/local/opt/gtest/include/
 RUN ln -s /usr/include/ /usr/local/opt/gtest/include/
 
 # Grading
-RUN apk add --no-cache git
+RUN apk add git
+RUN apk add python3 python3-dev
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install git+https://github.com/csci104/grade.git
+RUN python3 -m pip install git+https://github.com/csci104/curricula.git
+RUN chmod +x /bin/curricula-setup && curricula-setup
