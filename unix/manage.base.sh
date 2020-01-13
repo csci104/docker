@@ -40,15 +40,17 @@ function docker_run_command() {
 
 # A wrapper around run
 function docker_run() {
-  if [[ -f ${container} ]]; then
-    echo "A container seems to be running, use the kill command to stop it."
-  else
-    if ! docker_run_command; then
+  if [[ ! -f ${container} ]]; then
+    if docker_run_command; then
+      echo "A container is now running! Use the shell command to open a shell."
+    else
       echo "Startup failed, removing the container file."
       rm "${container}"
       exit 1
     fi
-    echo "A container is running! Use the shell command to open a shell."
+  else
+    echo "A container seems to be running, use the stop command to stop it."
+    exit 1
   fi
 }
 

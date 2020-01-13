@@ -46,11 +46,11 @@ And on Windows:
 ```
 
 There are three commands you can run through the manage script.
-- The first, `run`, starts the container up in the background.
+- The first, `start`, starts the container up in the background.
   The container should continue running until you shut down your computer, exit docker, or kill the container manually.
 - Next is `shell`, which simply opens a shell inside the virtual machine.
   This is where you can run standard linux commands, such as `g++` or `valgrind`.
-- The last is `kill`, which manually shuts down the virtual container.
+- The last is `stop`, which manually shuts down the virtual container.
 
 ## Details
 
