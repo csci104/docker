@@ -33,7 +33,8 @@ A management script should appear in the root directory of this repository.
 ## Manage
 
 The `manage` script provides three commands.
-To run it, use the following command on macOS:
+To run it, you must be in the root directory of this repository.
+Use the following command on macOS:
 
 ```bash
 ./manage.sh command
