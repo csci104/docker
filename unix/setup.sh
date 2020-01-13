@@ -2,21 +2,21 @@
 
 manage="./manage.sh"
 
-# go to docker folder
+# Go to docker folder
 cd "$(cd "$(dirname "$(dirname "${BASH_SOURCE[0]}")")" || return >/dev/null 2>&1 && pwd)" || return
 
-# check for docker on path
+# Check for docker on path
 echo "Looking for docker..."
 command -v docker >/dev/null 2>&1 || {
-  echo >&2 "Docker is not installed or available on path!";
-  exit 1;
+  echo "Docker is not installed or available on path!"
+  exit 1
 }
 
-# create docker image
+# Create docker image
 echo "Creating docker image..."
 docker build -t csci104 -f ./Dockerfile . || exit $?
 
-# get mount point
+# Get mount point
 echo "Creating manager script..."
 read -r -p "Select a directory to mount: " work
 
@@ -25,11 +25,11 @@ while [[ ! -d "${work}" ]]; do
   read -r -p "Select a directory to mount: " work
 done
 
-# get absolute path of directory
+# Get absolute path of directory
 work="$(cd "${work}" || return; pwd -P)"
-echo "Mount point set, this can be changed later..."
+echo "Mount point set, this can be changed later by editing manage.sh..."
 
-# create manage scripts
+# Create manage scripts
 echo "Creating manager script..."
 rm ${manage} 2> /dev/null
 {

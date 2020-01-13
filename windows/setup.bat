@@ -1,53 +1,59 @@
 @echo off
+
+set manage=".\manage.bat"
+echo "%manage%"
+
+REM Go to docker folder
 pushd %0\..
 
-REM check for docker on path
-echo looking for docker...
+REM Check for docker on path
+@echo Looking for docker...
 where docker 1>nul 2>nul
-if not %errorlevel% == 0 (
-  echo docker is not installed or available on path!
-  exit
+if errorlevel 1 (
+  echo Docker is not installed or available on path!
+  exit 1
 )
 
-REM create docker image
-echo creating docker image...
+REM Create docker image
+echo Creating docker image...
 docker build -t csci104 -f ..\Dockerfile ..
 
-REM get mount point
-echo creating manager script...
-set /p work="select a directory to mount: "
+REM Get mount point
+echo Creating manager script...
+set /p work="Select a directory to mount: "
 
 :invalid
 if not exist %work% (
-  echo invalid directory!
-  set /p work="select a directory to mount: "
+  echo Invalid directory!
+  set /p work="Select a directory to mount: "
   goto invalid
 )
 
-REM directory should be relative to caller
+REM Directory should be relative to caller
 popd
 
-REM get absolute path of directory
+REM Get absolute path of directory
 call :absolute "%work%"
 set work="%return%"
-echo mount set, this can be changed later...
+echo Mount point set, this can be changed later by editing manage.bat...
 
-REM go to docker folder
+REM Go to docker folder
 pushd %0\..\..
 
-REM create manage script
-echo creating manager script...
-del .\manage.bat
-echo @echo off >> .\manage.bat
-echo( >> .\manage.bat
-echo REM change this to the directory you want to access in your container >> .\manage.bat
-echo set work=%work% >> .\manage.bat
-echo( >> .\manage.bat
-type .\windows\manage.base.bat >> .\manage.bat
+REM Create manage script
+echo Creating manager script...
+del "%manage%"
+>"%manage%" (
+  echo @echo off
+  echo(
+  echo REM Change this to the directory you want to access in your container
+  echo set work=%work%
+  echo(
+  type .\windows\manage.base.bat
+)
 
 REM
-echo done!
-
+echo Done!
 exit /B
 
 REM convert path to absolute
