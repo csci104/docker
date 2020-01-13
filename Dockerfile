@@ -24,9 +24,9 @@ RUN ln -s /usr/include/ /usr/local/opt/gtest/include/
 
 # Grading
 RUN apk add git
+RUN apk add acl
 RUN apk add python3 python3-dev
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install git+https://github.com/csci104/curricula.git
 RUN chmod +x /bin/curricula-setup && curricula-setup
 RUN adduser -D -H grader
-
