@@ -127,3 +127,19 @@ docker kill csci104
 
 To determine the correct valgrind suppression in the future, refer to [this manual](https://wiki.wxwidgets.org/Valgrind_Suppression_File_Howtohttps://wiki.wxwidgets.org/Valgrind_Suppression_File_Howto).
 Running it on a sufficiently complex piece of leak-free code will yield most of the necessary configurations.
+
+### Note: Hypervisor on Windows
+
+If you plan to using Docker and Virtual Box as a fallback, please be aware of what you will need to do to switch between the two systems. You'll have to toggle the Hypervisor:
+
+Docker: Hypervisor **ON**
+
+VirtualBox: Hypervisor **OFF**
+
+Here's how you can do that on Windows:
+
+1. Press Windows key + X and select `Apps and Features`.
+2. Scroll down to the bottom and click Programs and Features link.
+3. Then click the Turn Windows Hypervisor on or off link on the left pane.
+
+This issue **ONLY** concerns Windows users.
