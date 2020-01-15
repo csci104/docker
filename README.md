@@ -57,9 +57,9 @@ There are three commands you can run through the manage script.
 
 The way we've set up Docker allows you to access all the files inside the directory you mounted to the container within the Linux environment from `/work`.
 Changes you make will be immediately reflected in and outside of the virtual machine.
-We **strongly recommend** that you edit your code outside of the container and then compile and debug it inside the shell.
+We **strongly recommend that you edit your code outside of the container and then compile and debug it inside the shell**.
 
-Generally, we also recommend that you `start` the container once and leave it running in the background so that you can open a shell (using `./manage shell` or `.\manage shell`) whenever needed.
+Generally, **we also recommend that you `start` the container once and leave it running in the background** so that you can open a shell (using `./manage shell` or `.\manage shell`) whenever needed.
 While not in use it will incur minimal resource usage.
 
 For example, say you run through the setup and mount the directory `/Users/me/Documents/cs104/`.
