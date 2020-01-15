@@ -75,7 +75,7 @@ You can edit the file from your computer's main operating system, then do the fo
 
 ```bash
 ~/Documents/cs104 $ cd /Path/To/docker
-/Path/To/docker $ ./manage shell          # On your computer, open a shell in the container
+/Path/To/docker $ ./manage.sh shell          # On your computer, open a shell in the container
 root@docker:/work $ g++ test.cpp -o test  # In the virtual machine compile test.cpp
 root@docker:/work $ ./test                # Run the binary
 ```
