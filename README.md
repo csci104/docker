@@ -64,13 +64,23 @@ While not in use it will incur minimal resource usage.
 
 For example, say you run through the setup and mount the directory `/Users/me/Documents/cs104/`.
 Next, you create a file `test.cpp` with some C++ code and put it in that directory.
+
+```bash
+~ $ cd /Users/me/Documents/cs104
+~/Documents/cs104 $ touch test.cpp
+```
+
 You can edit the file from your computer's main operating system, then do the following to compile it:
 
 ```bash
-~/Path/To/docker $ ./manage shell         # On your computer, open a shell in the container
+~/Documents/cs104 $ cd /Path/To/docker
+/Path/To/docker $ ./manage shell          # On your computer, open a shell in the container
 root@docker:/work $ g++ test.cpp -o test  # In the virtual machine compile test.cpp
 root@docker:/work $ ./test                # Run the binary
 ```
+
+You'll notice that the path you mounted always corresponds to `/work` inside the container.
+No matter where you set the mount point to in your file system, this is where it'll be accessible.
 
 ## Details
 
