@@ -61,6 +61,7 @@ We **strongly recommend that you edit your code outside of the container and the
 
 Generally, **we also recommend that you `start` the container once and leave it running in the background** so that you can open a shell (using `./manage shell` or `.\manage shell`) whenever needed.
 While not in use it will incur minimal resource usage.
+Additionally, `stop`ping the image will completely erase any files in the container that are not under `/work`.
 
 For example, say you run through the setup and mount the directory `/Users/me/Documents/cs104/`.
 Next, you create a file `test.cpp` with some C++ code and put it in that directory.
