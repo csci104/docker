@@ -53,6 +53,12 @@ There are three commands you can run through the manage script.
   This is where you can run standard linux commands, such as `g++` or `valgrind`.
 - The last is `stop`, which manually shuts down the virtual container.
 
+## Usage
+
+The way we've set up Docker allows you to access all the files inside the directory you mounted to the container within the Linux environment from `/work`.
+Changes you make will be immediately reflected in and outside of the virtual machine.
+We recommend that you edit your assignment outside the container (using the IDE of your preference) and then compile and debug it inside the shell (provided by `./manage shell` or `.\manage shell`).
+
 ## Details
 
 **Note: everything you need is provided above.**
