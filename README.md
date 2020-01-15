@@ -57,7 +57,20 @@ There are three commands you can run through the manage script.
 
 The way we've set up Docker allows you to access all the files inside the directory you mounted to the container within the Linux environment from `/work`.
 Changes you make will be immediately reflected in and outside of the virtual machine.
-We recommend that you edit your assignment outside the container (using the IDE of your preference) and then compile and debug it inside the shell (provided by `./manage shell` or `.\manage shell`).
+We **strongly recommend** that you edit your code outside of the container and then compile and debug it inside the shell.
+
+Generally, we also recommend that you `start` the container once and leave it running in the background so that you can open a shell (using `./manage shell` or `.\manage shell`) whenever needed.
+While not in use it will incur minimal resource usage.
+
+For example, say you run through the setup and mount the directory `/Users/me/Documents/cs104/`.
+Next, you create a file `test.cpp` with some C++ code and put it in that directory.
+You can edit the file from your computer's main operating system, then do the following to compile it:
+
+```bash
+~/Path/To/docker $ ./manage shell         # On your computer, open a shell in the container
+root@docker:/work $ g++ test.cpp -o test  # In the virtual machine compile test.cpp
+root@docker:/work $ ./test                # Run the binary
+```
 
 ## Details
 
