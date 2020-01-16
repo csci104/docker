@@ -9,11 +9,29 @@ Docker is considerably less resource-intensive than installing a full virtual ma
 Instead of needing the facilities for a graphical interface, virtual file system, etc., we can mount any directory of the host machine directly in the container and use a shell to run compilation and debugging.
 Development and file management may be done normally on the local machine.
 
+## System Requirements
+
+Below are the system requirements for Docker Desktop:
+
+[Windows host](https://docs.docker.com/docker-for-windows/install/):
+
+- Windows 10 64-bit: Pro, Enterprise, or Education (Build 15063 or later).
+- Hyper-V and Containers Windows features must be enabled.
+
+If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/).
+
+[Mac host](https://docs.docker.com/docker-for-mac/install/):
+
+- Mac hardware must be a 2010 or newer model
+- macOS must be version 10.13 or newer
+- 4GB RAM minimum
+
+
 ## Setup
 
 First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
 Once done, **clone this repository**, which contains a setup script for both Windows- and Unix-based systems.
-Running it will build the the CSCI 104 docker image and produce a management command line executable.
+Running it will build the CSCI 104 docker image and produce a management command line executable.
 On macOS in Terminal, run the respective setup script:
 
 ```bash
