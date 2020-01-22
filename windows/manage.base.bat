@@ -6,13 +6,13 @@ REM in the generated manage script.
 REM Check if the work variable is defined and is a valid directory
 if "%work%" == "" (
   @echo No work directory is defined! Maybe the manage script was not generated correctly?
-  exit 1
+  exit /b 1
 )
 
 REM Check if the work directory exists
 if not exist "%work%" (
   @echo The work directory specified in the manage script cannot be found!
-  exit 1
+  exit /b 1
 )
 
 REM The container ID file should be in the same directory as this script
