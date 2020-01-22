@@ -1,29 +1,34 @@
-FROM alpine:3.10.1
-RUN apk update
+FROM ubuntu:18.04
 
 # Scripts and configuration
 COPY files/root/* /root/
 COPY files/bin/* /bin/
 
-# Basic stuff
-RUN apk add bash
-RUN apk add nano
+RUN apt-get update && apt-get install -y \
+    clang \
+    g++ \
+    make \
+    valgrind \
+    gdb \
+    llvm \
+    libgtest-dev \
+    cmake
 
-# C++
-RUN apk add cmake
-RUN apk add build-base
-RUN apk add valgrind
-RUN apk add gdb
-RUN apk add llvm
-RUN apk add clang
-
-# Legacy gtest stuff for labs, make expected directory structure to link for lab makefiles
-RUN apk add gtest gtest-dev
-RUN mkdir -p /usr/local/opt/gtest/include/
-RUN ln -s /usr/include/ /usr/local/opt/gtest/include/
+# GTEST installation for labs
+WORKDIR /usr/src/gtest
+RUN cmake CMakeLists.txt
+RUN make
+RUN cp *.a /usr/lib
+RUN mkdir -p /usr/local/lib/gtest/
+RUN ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
+RUN ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 
 # Grading
-RUN apk add git
-RUN apk add acl
-RUN apk add python3 python3-dev
-RUN python3 -m pip install --upgrade pip
+RUN apt-get install -y \
+    git \
+    acl \
+    python3 \
+    python3-dev
+
+VOLUME ["/home/work"]
+WORKDIR /home/work
