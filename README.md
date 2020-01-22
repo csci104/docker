@@ -71,9 +71,7 @@ There are three commands you can run through the manage script.
   This is where you can run standard linux commands, such as `g++` or `valgrind`.
 - The last is `stop`, which manually shuts down the virtual container.
 
-## Usage
-
-Feel free to read through the [wiki](https://github.com/csci104/docker/wiki) for more information on [how to use Docker](https://github.com/csci104/docker/wiki/Usage) as well as [how it works](https://github.com/csci104/docker/wiki/Details).
+Feel free to read through the [wiki](https://github.com/csci104/docker/wiki) for **more information on [how to use Docker](https://github.com/csci104/docker/wiki/Usage)** as well as [how it works](https://github.com/csci104/docker/wiki/Details).
 
 
 ### Note: Valgrind Suppression
