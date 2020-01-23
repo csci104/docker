@@ -24,7 +24,7 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 
 - Mac hardware must be a 2010 or newer model
 - macOS must be version 10.13 or newer
-- 4GB RAM minimum
+- 4 GB RAM minimum
 
 
 ## Setup
@@ -71,107 +71,10 @@ There are three commands you can run through the manage script.
   This is where you can run standard linux commands, such as `g++` or `valgrind`.
 - The last is `stop`, which manually shuts down the virtual container.
 
-## Usage
+Feel free to read through the [wiki](https://github.com/csci104/docker/wiki) for **more information on [how to use Docker](https://github.com/csci104/docker/wiki/Usage)** as well as [how it works](https://github.com/csci104/docker/wiki/Details).
 
-The way we've set up Docker allows you to access all the files inside the directory you mounted to the container within the Linux environment from `/work`.
-Changes you make will be immediately reflected in and outside of the virtual machine.
-We **strongly recommend that you edit your code outside of the container and then compile and debug it inside the shell**.
 
-Generally, **we also recommend that you `start` the container once and leave it running in the background** so that you can open a shell (using `./manage shell` or `.\manage shell`) whenever needed.
-While not in use it will incur minimal resource usage.
-Additionally, `stop`ping the image will completely erase any files in the container that are not under `/work`.
-
-For example, say you run through the setup and mount the directory `/Users/me/Documents/cs104/`.
-Next, you create a file `test.cpp` with some C++ code and put it in that directory.
-
-```bash
-~ $ cd /Users/me/Documents/cs104
-~/Documents/cs104 $ touch test.cpp
-```
-
-You can edit the file from your computer's main operating system, then do the following to compile it:
-
-```bash
-~/Documents/cs104 $ cd /Path/To/docker
-/Path/To/docker $ ./manage.sh shell          # On your computer, open a shell in the container
-root@docker:/work $ g++ test.cpp -o test  # In the virtual machine compile test.cpp
-root@docker:/work $ ./test                # Run the binary
-```
-
-You'll notice that the path you mounted always corresponds to `/work` inside the container.
-No matter where you set the mount point to in your file system, this is where it'll be accessible.
-
-## Details
-
-**Note: everything you need is provided above.**
-The `manage` script should handle standard use-scenarios for the docker environment.
-However, if you're looking to fix issues you're having with the system or are interested in how it works, the following sections provide a thorough explanation of the three main commands used to manage the container.
-
-### Starting the Image
-
-Before we actually run a container with our image, we need to know where to mount the course material folder from.
-Locate wherever you cloned it to on your computer and get the full path.
-For example, on Windows that path might look like `C:\Users\username\Documents\hw-username\`, and on macOS it might look like `/Users/username/Documents/hw-username`.
-
-The base command for running an image is:
-
-```bash
-# Don't run this yet
-docker run image
-```
-
-However, there are several configurations we want to include:
-
-- `-v /path/to/material/:/work/` mounts the work folder on our machine to `/work` in the container
-- `-d` runs the container in the background
-- `-t` allocates a command prompt for us to access when we interact with the container
-- `--cap-add SYS_PTRACE` will allow GDB to correctly access executable runtimes
-- `--security-opt seccomp=unconfined` allows memory allocation and debugging to work correctly
-- `--name csci104` gives the container a name to reference in other docker commands
-
-Thus, our complete command is:
-
-```bash
-docker run -v /Users/username/Documents/hw-username/:/work/ -dt --cap-add SYS_PTRACE --security-opt seccomp=unconfined --name csci104 csci104
-```
-
-Or, you can make a copy of the provided setup script, `setup.bat` for Windows and `setup.sh` for macOS, and fill in the path to your material folder.
-After that, simply running that script in the command line will correctly run the Docker container.
-
-**Note that you only need to run the Docker container once, as it will remain active in the background until you shut down your computer or manually stop it.**
-
-### Accessing the Command Line
-
-Finally, to access the command line of the container you've started, we want to use the `exec` command.
-We will add two options to make the command prompt usable:
-
-- `-i` allows the `exec` to be interactive
-- `-t` provides us access to an actual shell
-
-Thus, the final command is:
-
-```bash
-docker exec -it csci104 bash
-```
-
-### Stopping the Image
-
-First, find the ID of the container you started by running `docker container ls`.
-In case you are for any reason running other containers, make sure to locate the one with image `csci104`.
-
-Now, simply run the Docker kill command with that ID:
-
-```bash
-docker kill containerid
-```
-
-Or, if you ran the image with the `--name` flag, you can use its name:
-
-```bash
-docker kill csci104
-```
-
-### Appendix: Valgrind Suppression
+### Note: Valgrind Suppression
 
 To determine the correct valgrind suppression in the future, refer to [this manual](https://wiki.wxwidgets.org/Valgrind_Suppression_File_Howtohttps://wiki.wxwidgets.org/Valgrind_Suppression_File_Howto).
 Running it on a sufficiently complex piece of leak-free code will yield most of the necessary configurations.
@@ -180,9 +83,8 @@ Running it on a sufficiently complex piece of leak-free code will yield most of 
 
 If you plan to using Docker and Virtual Box as a fallback, please be aware of what you will need to do to switch between the two systems. You'll have to toggle the Hypervisor:
 
-Docker: Hypervisor **ON**
-
-VirtualBox: Hypervisor **OFF**
+- Docker: Hypervisor **ON**
+- VirtualBox: Hypervisor **OFF**
 
 Here's how you can do that on Windows:
 
