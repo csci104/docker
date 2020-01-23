@@ -30,5 +30,5 @@ RUN apt-get install -y \
     python3 \
     python3-dev
 
-VOLUME ["/home/work"]
-WORKDIR /home/work
+VOLUME ["/work"]
+WORKDIR /work
