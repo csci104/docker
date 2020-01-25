@@ -27,8 +27,9 @@ RUN ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 RUN apt-get install -y \
     git \
     acl \
-    python3 \
-    python3-dev
+    python3.7 \
+    python3.7-dev \
+    python3-pip
 
 VOLUME ["/work"]
 WORKDIR /work
