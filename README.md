@@ -9,6 +9,9 @@ Docker is considerably less resource-intensive than installing a full virtual ma
 Instead of needing the facilities for a graphical interface, virtual file system, etc., we can mount any directory of the host machine directly in the container and use a shell to run compilation and debugging.
 Development and file management may be done normally on the local machine.
 
+The rest of this README is a quickstart for more experienced users.
+Feel free to read through the [wiki](https://github.com/csci104/docker/wiki) for **a more in-depth guide on [how setup and use Docker](https://github.com/csci104/docker/wiki/Usage)** as well as [how it works](https://github.com/csci104/docker/wiki/Details).
+
 ## System Requirements
 
 Below are the system requirements for Docker Desktop:
@@ -70,9 +73,6 @@ There are three commands you can run through the manage script.
 - Next is `shell`, which simply opens a shell inside the virtual machine.
   This is where you can run standard linux commands, such as `g++` or `valgrind`.
 - The last is `stop`, which manually shuts down the virtual container.
-
-Feel free to read through the [wiki](https://github.com/csci104/docker/wiki) for **more information on [how to use Docker](https://github.com/csci104/docker/wiki/Usage)** as well as [how it works](https://github.com/csci104/docker/wiki/Details).
-
 
 ### Note: Valgrind Suppression
 
