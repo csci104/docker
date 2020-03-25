@@ -29,6 +29,9 @@ if not exist %work% (
   goto invalid
 )
 
+REM Remove trailing backslash
+IF %work:~-1%==\ SET work=%work:~0,-1%
+
 REM Directory should be relative to caller
 popd
 
