@@ -30,6 +30,7 @@ RUN apt-get install -y \
     python3.7 \
     python3.7-dev \
     python3-pip
+RUN python3.7 -m pip install curricula curricula-shell
 
 VOLUME ["/work"]
 WORKDIR /work

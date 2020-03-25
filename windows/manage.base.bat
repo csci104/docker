@@ -26,6 +26,12 @@ if "%1" == "start" (
   set done=1
 )
 
+
+if "%1" == "test" (
+  call :docker_run_test
+  set done=1
+)
+
 if "%1" == "shell" (
   call :docker_shell
   set done=1
@@ -39,6 +45,7 @@ if "%1" == "stop" (
 if %done% == 0 (
   @echo this command manages the virtual linux container!
   @echo   start - start up the container in the background
+  @echo   test - start up the container for testing in the background
   @echo   shell - open a shell in your running container
   @echo   stop - kill the container in the background
   exit /b 0
@@ -79,6 +86,28 @@ if not exist %container% (
   exit /b 1
 )
 exit /b 0
+
+:docker_admin_run_command
+docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_ADMIN csci104 >"%container%"
+exit /b 0
+
+:docker_run_test
+if not exist %container% (
+  call :docker_admin_run_command
+  if not errorlevel 1 (
+    @echo A container is running! Use the shell command to open a shell. WARNING: stop container when finished testing for system safety
+  ) else (
+    @echo Startup failed, removing the container file.
+    del "%container%"
+    exit /b 1
+  )
+) else (
+  @echo A container seems to be running, use the stop command to stop it.
+  exit /b 1
+)
+exit /b 0
+
+
 
 :docker_shell
 call :read_container

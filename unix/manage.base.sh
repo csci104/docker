@@ -54,6 +54,28 @@ function docker_run() {
   fi
 }
 
+# Run the docker image with the root directory and enabling more syscalls for runtime tracking
+function docker_admin_run_command() {
+  docker run -v "${work}":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_ADMIN csci104 1> "${container}"
+}
+
+# A wrapper around run
+function docker_run_test() {
+  if [[ ! -f ${container} ]]; then
+    if docker_admin_run_command; then
+      echo "A testing container is now running! Use the shell command to open a shell."
+      echo "WARNING: stop container when finished testing for safety"
+    else
+      echo "Startup failed, removing the container file."
+      rm "${container}"
+      exit 1
+    fi
+  else
+    echo "A container seems to be running, use the stop command to stop it."
+    exit 1
+  fi
+}
+
 # Open a bash shell in the container
 function docker_shell() {
   read_container
@@ -72,6 +94,9 @@ function docker_kill() {
 if [[ $1 = "start" ]]; then
   docker_run
   exit $?
+elif [[ $1 = "test" ]]; then
+  docker_run_test
+  exit $?
 elif [[ $1 = "shell" ]]; then
   docker_shell
 elif [[ $1 = "stop" ]]; then
@@ -79,6 +104,7 @@ elif [[ $1 = "stop" ]]; then
 else
   echo this command manages the virtual linux container
   echo   start - start up the container in the background
+  echo   test - start up the container for testing in the background
   echo   shell - open a shell in your running container
   echo   stop - kill the container in the background
 fi
