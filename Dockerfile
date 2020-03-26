@@ -1,5 +1,9 @@
 FROM ubuntu:18.04
 
+# Make sure line endings are Unix
+# This changes nothing if core.autocrlf is set to input
+RUN sed -i 's/\r$//' files/root/.bashrc
+
 # Scripts and configuration
 COPY files/root/* /root/
 COPY files/bin/* /bin/
