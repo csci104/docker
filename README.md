@@ -63,6 +63,8 @@ Use the following command on macOS:
 
 And on Windows:
 
+**NOTE**: Please make sure you run the manage script from `Command Prompt`, and **NOT** `PowerShell`.
+
 ```cmd
 .\manage command
 ```
