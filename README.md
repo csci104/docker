@@ -33,6 +33,7 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 ## Setup
 
 First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
+On a Windows machine, **enable experimental features** in the Docker Desktop Settings > Daemon >Advanced.
 Once done, **clone this repository**, which contains a setup script for both Windows- and Unix-based systems.
 Running it will build the CSCI 104 docker image and produce a management command line executable.
 On macOS in Terminal, run the respective setup script:
