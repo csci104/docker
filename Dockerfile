@@ -10,6 +10,8 @@ RUN sed -i 's/\r$//' /root/.bashrc
 
 RUN apt-get update && apt-get install -y \
     clang \
+    clang-tidy \
+    clang-format \
     g++ \
     make \
     valgrind \
