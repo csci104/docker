@@ -68,7 +68,7 @@ if exist "%container%" (
 exit /b 0
 
 :docker_run_command
-docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE csci104 >"%container%"
+docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE usccsci104/docker:latest >"%container%"
 exit /b 0
 
 :docker_run
@@ -88,7 +88,7 @@ if not exist %container% (
 exit /b 0
 
 :docker_admin_run_command
-docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_ADMIN csci104 >"%container%"
+docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_ADMIN usccsci104/docker:latest >"%container%"
 exit /b 0
 
 :docker_run_test
