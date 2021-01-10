@@ -35,7 +35,7 @@ function read_container() {
 
 # Run the docker image with the root directory and some additional config
 function docker_run_command() {
-  docker run -v "${work}":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE csci104 1> "${container}"
+  docker run -v "${work}":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE usccsci104/docker:latest 1> "${container}"
 }
 
 # A wrapper around run
@@ -56,7 +56,7 @@ function docker_run() {
 
 # Run the docker image with the root directory and enabling more syscalls for runtime tracking
 function docker_admin_run_command() {
-  docker run -v "${work}":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_ADMIN csci104 1> "${container}"
+  docker run -v "${work}":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_ADMIN usccsci104/docker:latest 1> "${container}"
 }
 
 # A wrapper around run

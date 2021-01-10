@@ -14,9 +14,9 @@ if errorlevel 1 (
   exit 1
 )
 
-REM Create docker image
-echo Creating docker image...
-docker build -t csci104 -f ..\Dockerfile ..
+REM Pull docker image
+echo Pulling docker image...
+docker pull usccsci104/docker:latest
 
 REM Get mount point
 echo Creating manager script...
