@@ -2,9 +2,8 @@ name: Publish Docker Image
 
 on:
   push:
-    brnaches:
+    branches:
       - master
-      - develop
 
 jobs:
   push_to_registry:
