@@ -1,10 +1,10 @@
 # CSCI 104 Docker
 
-<a href="https://hub.docker.com/repository/docker/camerondurham/cs350-docker">
+<a href="https://hub.docker.com/repository/docker/usccsci104/docker">
   <img align="left" src="https://img.shields.io/docker/image-size/usccsci104/docker?style=flat-square" />
 </a>
 
-<a href="https://hub.docker.com/repository/docker/camerondurham/cs350-docker">
+<a href="https://hub.docker.com/repository/docker/usccsci104/docker">
   <img align="left" src="https://img.shields.io/docker/pulls/usccsci104/docker" />
 </a>
 
