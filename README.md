@@ -77,8 +77,7 @@ For example, if you cloned your homework directory to `/Users/username/Documents
 **You must supply the absolute path of the directory you want to access**.
 Something like `cs104/` or `../` is not sufficient, the path must start from `/` on Unix or `C:\` (or whatever disk you're working from) on Windows.
 
-Once you've finished answering the prompts, a management script named `manage.sh` or `manage.bat` should appear in the **base directory of this repository**.
-If you ran the previous commands as described, you won't have to `cd` anywhere to complete the following sections.
+Once you've finished answering the prompts and setup script finishes, you should be ready to use `ch` to work with your csci104 environment. Remember that if `ch` isn't available, you may need to run `source ~/.zshrc` or `source ~/.bashrc` on macOS. 
 
 ## Working
 
