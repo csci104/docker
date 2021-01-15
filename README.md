@@ -40,7 +40,7 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 - 4 GB RAM minimum
 
 
-## Setup
+## Setting Up
 
 First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
 On a Windows machine, **enable experimental features** in the Docker Desktop Settings > Daemon >Advanced.
@@ -73,7 +73,7 @@ Something like `cs104/` or `../` is not sufficient, the path must start from `/`
 Once you've finished answering the prompts, a management script named `manage.sh` or `manage.bat` should appear in the **base directory of this repository**.
 If you ran the previous commands as described, you won't have to `cd` anywhere to complete the following sections.
 
-## Using
+## Working
 
 The `ch` (container-helper) command-line tool allows you to create and access Docker environments.
 When you ran the `setup` script, it created and pulled a Docker image made for
