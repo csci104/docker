@@ -49,7 +49,7 @@ Running it will install a helper CLI (command-line tool), pull the CSCI 104 dock
 
 **macOS/Linux**
 
-On macOS in Terminal, run the respective setup script:
+On macOS in Terminal, run the respective setup script inside the `docker` folder:
 
 ```bash
 ./unix/setup.sh
@@ -67,6 +67,8 @@ Make sure you run this in an Admin PowerShell:
 # must execute this in admin powershell and select [A] to run scripts
 Set-ExecutionPolicy RemoteSigned
 ```
+
+In PowerShell, run this command in the `docker` folder:
 
 ```powershell
 .\windows\setup
