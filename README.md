@@ -45,16 +45,23 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
 On a Windows machine, **enable experimental features** in the Docker Desktop Settings > Daemon >Advanced.
 Once done, **clone this repository**, which contains a setup script for both Windows- and Unix-based systems.
-Running it will build the CSCI 104 docker image and produce a management command line executable.
+Running it will install a helper CLI (command-line tool), pull the CSCI 104 docker image and setup a virtualized environment.
 On macOS in Terminal, run the respective setup script:
 
 ```bash
 ./unix/setup.sh
 ```
 
-On Windows in CMD, the process is similar:
+On Windows in PowerShell, the process is similar but you must make sure you can run PowerShell scripts:
 
-```cmd
+Make sure you run this in an Admin PowerShell:
+
+```powershell
+# must execute this in admin powershell and select [A] to run scripts
+Set-ExecutionPolicy RemoteSigned
+```
+
+```powershell
 .\windows\setup
 ```
 
@@ -66,30 +73,35 @@ Something like `cs104/` or `../` is not sufficient, the path must start from `/`
 Once you've finished answering the prompts, a management script named `manage.sh` or `manage.bat` should appear in the **base directory of this repository**.
 If you ran the previous commands as described, you won't have to `cd` anywhere to complete the following sections.
 
-## Manage
+## Using
 
-The `manage` script provides three commands.
-To run it, you must be in the root directory of this repository.
-Use the following command on macOS:
+The `ch` (container-helper) command-line tool allows you to create and access Docker environments.
+When you ran the `setup` script, it created and pulled a Docker image made for
+compiling, running and debugging C++ code in CSCI 104. To run this environment,
+you can run this command (the same for both Unix and Windows systems):
 
 ```bash
-./manage.sh command
+ch <COMMAND> csci104
 ```
 
-And on Windows:
-
-**NOTE**: Please make sure you run the manage script from `Command Prompt`, and **NOT** `PowerShell`.
-
-```cmd
-.\manage command
-```
-
-There are three commands you can run through the manage script.
+There are three commands you will regularly use:
 - The first, `start`, starts the container up in the background.
   The container should continue running until you shut down your computer, exit docker, or kill the container manually.
 - Next is `shell`, which simply opens a shell inside the virtual machine.
   This is where you can run standard linux commands, such as `g++` or `valgrind`.
 - The last is `stop`, which manually shuts down the virtual container.
+
+### Example
+
+See full documentation for `ch` [here](https://github.com/camerondurham/ch).
+
+```bash
+# start your environment
+ch start csci104
+
+# get a shell into the csci104 environment
+ch shell csci104
+```
 
 ### Note: Valgrind Suppression
 
