@@ -46,11 +46,18 @@ First, **install Docker** desktop from [the website](https://www.docker.com/prod
 On a Windows machine, **enable experimental features** in the Docker Desktop Settings > Daemon >Advanced.
 Once done, **clone this repository**, which contains a setup script for both Windows- and Unix-based systems.
 Running it will install a helper CLI (command-line tool), pull the CSCI 104 docker image and setup a virtualized environment.
+
+**macOS/Linux**
+
 On macOS in Terminal, run the respective setup script:
 
 ```bash
 ./unix/setup.sh
 ```
+
+Note: if you're not able to run `ch` after setup, you may need to run `source ~/.zshrc` or `source ~/.bashrc` depending on your shell.
+
+**Windows**
 
 On Windows in PowerShell, the process is similar but you must make sure you can run PowerShell scripts:
 
