@@ -1,5 +1,15 @@
 # CSCI 104 Docker
 
+<a href="https://hub.docker.com/repository/docker/usccsci104/docker">
+  <img align="left" src="https://img.shields.io/docker/image-size/usccsci104/docker?style=flat-square" />
+</a>
+
+<a href="https://hub.docker.com/repository/docker/usccsci104/docker">
+  <img align="left" src="https://img.shields.io/docker/pulls/usccsci104/docker" />
+</a>
+
+</br>
+
 This repository contains a Dockerfile and a couple of management scripts for creating and using a virtualized Linux container capable of building, running, and debugging C++.
 Using a virtualized container is preferable to a user's local machine because it guarantees consistent compilation and execution of C++ binaries.
 While compilers and tooling may vary between systems, creating a sealed environment from the exact same components every time ensures that code runs the same for graders as it does students.
