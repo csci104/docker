@@ -70,6 +70,10 @@ fi
 
 release_url=$(get_release_url "$repository" "$version" "$zip_filename")
 get_release_package "$release_url" "$HOME" "$zip_filename"
+
+# remove downloaded zip file
+rm -f "$HOME/$zip_filename"
+
 add_to_path "$HOME/${zip_filename%.*}"
 
 echo "Done! Try using ch with: ch --help"

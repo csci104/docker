@@ -33,7 +33,7 @@ function Add-ToPath($directory) {
     $newpath = "$path" + ";$directory"
 
     # set path for future sessions
-    [Environment]::SetEnvironmentVariable('Path', $newpath)
+    [Environment]::SetEnvironmentVariable('Path', $newpath, [EnvironmentVariableTarget]::User)
 
     # set path for current session
     $env:Path = $newpath
@@ -47,14 +47,17 @@ $latest_version = Get-LatestReleaseVersion($repository)
 
 $download_url = Get-ReleaseUrl -Repository $repository -Version $latest_version -Filename $zip_filename
 
-$download_dir = [Environment]::GetFolderPath("USERPROFILE")
+$home_directory = [Environment]::GetFolderPath("USERPROFILE")
 
-Write-Output "Downloading $program version: $latest_version to $download_dir"
+Write-Output "Downloading $program version: $latest_version to $home_directory"
 
-$download_path = Join-Path -Path $download_dir -ChildPath $zip_filename
-$unpack_path = $download_dir
+$download_path = Join-Path -Path $home_directory -ChildPath $zip_filename
+$unpack_path = $home_directory
 
 Get-ReleasePackage -Url $download_url -DownloadPath $download_path -ExtractPath $unpack_path
+
+# remove zip file
+Remove-Item (Join-Path -Path $unpack_path -ChildPath $zip_filename)
 
 $unpacked_folder = $zip_filename.TrimEnd(".zip")
 $binary_location = Join-Path -Path $unpack_path -ChildPath $unpacked_folder
