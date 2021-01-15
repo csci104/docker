@@ -44,15 +44,15 @@ function add_to_path() {
     exit 1
   fi
 
-  if [ -e "$HOME/.bashrc" ]; then
+  if [ -e "$HOME/.bashrc" ] || [ "$0" = "-bash" ]; then
     echo "Adding to $HOME/.bashrc"
     append_path_to_file "$location" "$HOME/.bashrc"
-  elif [ -e "$HOME/.zshrc" ]; then
+  elif [ -e "$HOME/.zshrc" ] || [ "$0" = "-zsh" ]; then
     echo "Adding to $HOME/.zshrc"
     append_path_to_file "$location" "$HOME/.zshrc"
   else
     echo -e "No $HOME/.bashrc or $HOME/.zshrc found...\nPlease add this line to your preferred shell profile:"
-    echo "export PATH=\"\$PATH:$location\""
+    echo "echo export PATH=\"\$PATH:$location\" >> $HOME/.zshrc"
     exit 1
   fi
   # add to current profile
