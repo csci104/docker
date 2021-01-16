@@ -1,5 +1,4 @@
 #!/bin/bash
-
 repository="camerondurham/ch"
 
 function get_latest_release() {
@@ -44,19 +43,20 @@ function add_to_path() {
     exit 1
   fi
 
-  if [ -e "$HOME/.bashrc" ] || [ "$0" = "-bash" ]; then
+  # add to current profile
+  export PATH="$PATH:$location"
+
+  if [ -e "$HOME/.bashrc" ] || [ "${SHELL##*/}" = "bash" ]; then
     echo "Adding to $HOME/.bashrc"
     append_path_to_file "$location" "$HOME/.bashrc"
-  elif [ -e "$HOME/.zshrc" ] || [ "$0" = "-zsh" ]; then
+  elif [ -e "$HOME/.zshrc" ] || [ "${SHELL##*/}" = "zsh" ]; then
     echo "Adding to $HOME/.zshrc"
     append_path_to_file "$location" "$HOME/.zshrc"
   else
-    echo -e "No $HOME/.bashrc or $HOME/.zshrc found...\nPlease add this line to your preferred shell profile:"
-    echo "echo export PATH=\"\$PATH:$location\" >> $HOME/.zshrc"
+    echo -e "No $HOME/.bashrc or $HOME/.zshrc found...\nPlease add this line to your preferred shell profile (~/.bashrc, ~/.bash_profile, ~/.zshrc, ...):"
+    echo "    export PATH=\"\$PATH:$location\""
     exit 1
   fi
-  # add to current profile
-  export PATH="$PATH:$location"
 }
 
 version=$(get_latest_release $repository)

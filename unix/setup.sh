@@ -34,3 +34,13 @@ echo "Creating csci104 environment..."
 ch create csci104 --image usccsci104/docker:latest --shell /bin/bash --volume "$work:/work" --security-opt seccomp:unconfined --cap-add SYS_PTRACE --replace
 
 echo "Done!"
+
+source_file=
+
+if [ "${SHELL##*/}" = "bash" ]; then
+  source_file="~/.bashrc"
+elif [ "${SHELL##*/}" = "zsh" ]; then
+  source_file="~/.zshrc"
+fi
+
+echo -e "\nRemember to run this command to add ch to your path:\n  source $source_file"
