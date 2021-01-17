@@ -111,6 +111,9 @@ ch start csci104
 ch shell csci104
 
 # exit the shell with key sequence <Ctrl+D> <Ctrl+C>
+
+# stop the running environment
+ch stop csci104
 ```
 
 ### Note: Valgrind Suppression
