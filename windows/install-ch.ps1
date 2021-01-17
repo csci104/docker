@@ -62,6 +62,11 @@ Remove-Item (Join-Path -Path $unpack_path -ChildPath $zip_filename)
 $unpacked_folder = $zip_filename.TrimEnd(".zip")
 $binary_location = Join-Path -Path $unpack_path -ChildPath $unpacked_folder
 
-Add-ToPath $binary_location
+# add directory to path if not already already added
+$found=([Environment]::GetEnvironmentVariable('Path') | Select-String -Pattern $unpacked_folder)
+if ([string]::IsNullOrEmpty($found)) {
+  Add-ToPath $binary_location
+}
+
 
 Write-Output "Done! Try using ch with: ch --help"
