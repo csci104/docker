@@ -96,7 +96,7 @@ There are three commands you will regularly use:
 - The first, `start`, starts the container up in the background.
   The container should continue running until you shut down your computer, exit docker, or kill the container manually.
 - Next is `shell`, which simply opens a shell inside the virtual machine.
-  This is where you can run standard linux commands, such as `g++` or `valgrind`.
+  This is where you can run standard linux commands, such as `g++` or `valgrind`. You can exit the shell with the key sequence <Ctrl+D> <Ctrl+C>.
 - The last is `stop`, which manually shuts down the virtual container.
 
 ### Example
@@ -109,6 +109,8 @@ ch start csci104
 
 # get a shell into the csci104 environment
 ch shell csci104
+
+# exit the shell with key sequence <Ctrl+D> <Ctrl+C>
 ```
 
 ### Note: Valgrind Suppression
