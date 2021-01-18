@@ -9,6 +9,7 @@ Function Test-CommandExists ($command) {
 Write-Output "Looking for docker..."
 if (-Not (Test-CommandExists -command docker)) {
   Write-Output Docker is not installed or available on path!
+  Write-Output Please make sure you have Docker installed before running this script
   exit 1
 }
 

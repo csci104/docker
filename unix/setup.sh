@@ -7,6 +7,7 @@ cd "$(cd "$(dirname "$(dirname "${BASH_SOURCE[0]}")")" || return >/dev/null 2>&1
 echo "Looking for docker..."
 command -v docker >/dev/null 2>&1 || {
   echo "Docker is not installed or available on path!"
+  echo "Please make sure you have Docker installed before running this script"
   exit 1
 }
 
