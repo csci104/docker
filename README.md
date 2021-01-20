@@ -43,8 +43,7 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 ## Setting Up
 
 First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
-On a Windows machine, **enable experimental features** in the Docker Desktop Settings > Daemon >Advanced.
-Once done, **clone this repository**, which contains a setup script for both Windows- and Unix-based systems.
+Once done, **clone this repository**, which contains a setup script for both Windows and Unix-based systems.
 Running it will install a helper CLI (command-line tool), pull the CSCI 104 docker image and setup a virtualized environment.
 
 **macOS/Linux**
@@ -89,7 +88,7 @@ compiling, running and debugging C++ code in CSCI 104. To run this environment,
 you can run this command (the same for both Unix and Windows systems):
 
 ```bash
-ch <COMMAND> csci104
+ch COMMAND csci104
 ```
 
 There are three commands you will regularly use:
