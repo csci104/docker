@@ -28,10 +28,11 @@ Below are the system requirements for Docker Desktop:
 
 [Windows host](https://docs.docker.com/docker-for-windows/install/):
 
-- Windows 10 64-bit: Pro, Enterprise, or Education (Build 15063 or later).
-- Hyper-V and Containers Windows features must be enabled.
+- Windows 10 64-bit: (Build 15063 or later)
+  - Pro, Enterprise, or Education: using Hyper-V and Containers Windows features must be enabled
+  - Any Windows 10 version: using WSL2 container backend **(recommended)**
 
-If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/).
+If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/) though this is not required if you use WSL2 for containers.
 
 [Mac host](https://docs.docker.com/docker-for-mac/install/):
 
@@ -54,7 +55,7 @@ On macOS in Terminal, run the respective setup script inside the `docker` folder
 ./unix/setup.sh
 ```
 
-Note: if you're not able to run `ch` after setup, you may need to run `source ~/.zshrc` or `source ~/.bashrc` depending on your shell.
+Note: if you're not able to run `ch` after setup, you may need to run `source ~/.zprofile` or `source ~/.bash_profile` depending on your shell.
 
 **Windows**
 
