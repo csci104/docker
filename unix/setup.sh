@@ -36,4 +36,13 @@ ch create csci104 --image usccsci104/docker:latest --shell /bin/bash --volume "$
 
 echo "Done!"
 
-echo -e "\nRemember to run this command to add ch to your path:\n  source ~/.profile"
+file=
+if [ -e "$HOME/.bash_profile" ]; then
+  file="~/.bash_profile"
+elif [ -e "$HOME/.zprofile" ]; then
+  file="~/.zprofile"
+else
+  file="~/.profile"
+fi
+
+echo -e "\nRemember to run this command to add ch to your path:\n  source $file"

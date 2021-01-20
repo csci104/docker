@@ -30,6 +30,15 @@ function get_release_url() {
   echo "https://github.com/$repo/releases/download/$version/$filename"
 }
 
+function add_if_not_present() {
+  local export_command=$1
+  local file=$2
+  if ! grep "$export_command" "$file" &> /dev/null; then
+    echo "Adding path to ch to $file"
+    echo "$export_command" >> "$file"
+  fi
+}
+
 function add_to_path() {
   local location=$1
   if [ ! -d "$location" ]; then
@@ -41,9 +50,14 @@ function add_to_path() {
   export PATH="$PATH:$location"
   local export_command="export PATH=\"\$PATH:$location\""
 
-  if ! grep "$export_command" "$HOME/.profile" > /dev/null; then
-    echo "Adding path to ch to $HOME/.profile"
-    echo "$export_command" >> "$HOME/.profile"
+  if [ -e "$HOME/.zprofile" ] || [ "${SHELL##*/}" = "zsh" ]; then
+    add_if_not_present "$export_command" "$HOME/.zprofile"
+    add_if_not_present "$export_command" "$HOME/.zshrc"
+  elif [ -e "$HOME/.bash_profile" ] || [ "${SHELL##*/}" = "bash" ]; then
+    add_if_not_present "$export_command" "$HOME/.bash_profile"
+    add_if_not_present "$export_command" "$HOME/.bashrc"
+  else
+    add_if_not_present "$export_command" "$HOME/.profile"
   fi
 }
 
