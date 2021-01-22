@@ -35,7 +35,7 @@ function add_if_not_present() {
   local file=$2
   if ! grep "$export_command" "$file" &> /dev/null; then
     echo "Adding path to ch to $file"
-    echo "$export_command" >> "$file"
+    echo -e "\n$export_command" >> "$file"
   fi
 }
 
