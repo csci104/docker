@@ -25,7 +25,6 @@ jobs:
       -
         name: Get Branch Name
         uses: nelonoel/branch-name@v1.0.1
-        run: echo ${BRANCH_NAME}
       -
         name: Build and push
         uses: docker/build-push-action@v2
