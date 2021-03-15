@@ -23,9 +23,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Get Branch Name
-        uses: nelonoel/branch-name@v1.0.1
-      -
         name: Build and push
         uses: docker/build-push-action@v2
         with:
@@ -33,9 +30,9 @@ jobs:
           file: ./Dockerfile
           pull: true
           push: true
-          cache-from: type=registry,ref=usccsci104/docker:${BRANCH_NAME}
+          cache-from: type=registry,ref=usccsci104/docker:dev
           cache-to: type=inline
-          tags: usccsci104/docker:${BRANCH_NAME}
+          tags: usccsci104/docker:dev
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
