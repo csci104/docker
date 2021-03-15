@@ -23,10 +23,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
+        name: Get Branch Name
+        uses: nelonoel/branch-name@v1.0.1
+        run: echo ${BRANCH_NAME}
       -
         name: Build and push
         uses: docker/build-push-action@v2
@@ -35,9 +34,9 @@ jobs:
           file: ./Dockerfile
           pull: true
           push: true
-          cache-from: type=registry,ref=usccsci104/docker:${{ steps.extract_branch.outputs.branch }
+          cache-from: type=registry,ref=usccsci104/docker:${BRANCH_NAME}
           cache-to: type=inline
-          tags: usccsci104/docker:${{ steps.extract_branch.outputs.branch }
+          tags: usccsci104/docker:${BRANCH_NAME}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
