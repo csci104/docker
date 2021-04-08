@@ -38,7 +38,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
         python3.9 \
         python3.9-dev \
         python3-pip \
-    && python3.9 -m pip install curricula curricula-grade curricula-compile curricula-format watchdog
+    && python3.9 -m pip install curricula curricula-grade curricula-grade-cpp curricula-compile curricula-format watchdog
 
 VOLUME ["/work"]
 WORKDIR /work
