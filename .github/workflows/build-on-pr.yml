@@ -3,7 +3,7 @@ name: Build Docker Image
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   push_to_registry:
