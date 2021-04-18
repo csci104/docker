@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 # Scripts and configuration
 COPY files/root/* /root/
@@ -25,20 +25,10 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /usr/src/gtest
 RUN cmake CMakeLists.txt \
     && make \
-    && cp ./lib/libgtest*.a /usr/lib \
+    && cp *.a /usr/lib \
     && mkdir -p /usr/local/lib/gtest/ \
     && ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a \
     && ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
-
-# Grading, curricula requires python3.9
-RUN add-apt-repository ppa:deadsnakes/ppa \
-    && apt-get install -y \
-        git \
-        acl \
-        python3.9 \
-        python3.9-dev \
-        python3-pip \
-    && python3.9 -m pip install curricula curricula-grade curricula-grade-cpp curricula-compile curricula-format watchdog
 
 VOLUME ["/work"]
 WORKDIR /work
