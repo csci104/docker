@@ -2,8 +2,8 @@ name: Publish Docker Image
 
 on:
   push:
-    branches:
-      - 'dev*'
+    tags:
+      - '*'
 
 jobs:
   push_to_registry:
@@ -22,6 +22,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Branch data
+        id: branch_name
+        run: |
+          echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
+          echo ::set-output name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
+          echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
       -
         name: Build and push
         uses: docker/build-push-action@v2
@@ -32,7 +38,7 @@ jobs:
           push: true
           cache-from: type=registry,ref=usccsci104/docker:dev
           cache-to: type=inline
-          tags: usccsci104/docker:dev
+          tags: usccsci104/docker:${{ steps.branch_name.outputs.SOURCE_TAG }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
