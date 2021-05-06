@@ -41,7 +41,8 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 - 4 GB RAM minimum
 
 If you are using Apple Silicon, you should run the setup commands in a Rosetta emulation.
-See [instructions here](https://osxdaily.com/2020/11/18/how-run-homebrew-x86-terminal-apple-silicon-mac/) to run Terminal through Rosetta.
+See [instructions here](https://osxdaily.com/2020/11/18/how-run-homebrew-x86-terminal-apple-silicon-mac/) to run Terminal through Rosetta. However,
+be aware that gdb may not work per [this Github issue](https://github.com/docker/for-mac/issues/5191#issue-775028988).
 
 ## Setting Up
 
