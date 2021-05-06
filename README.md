@@ -40,6 +40,8 @@ If you are using Windows 10 Home, you can obtain a "free" license for Windows 10
 - macOS must be version 10.13 or newer
 - 4 GB RAM minimum
 
+If you are using Apple Silicon, you should run the setup commands in a Rosetta emulation.
+See [instructions here](https://osxdaily.com/2020/11/18/how-run-homebrew-x86-terminal-apple-silicon-mac/) to run Terminal through Rosetta.
 
 ## Setting Up
 
