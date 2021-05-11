@@ -26,6 +26,10 @@ Feel free to read through the [wiki](https://github.com/csci104/docker/wiki) for
 ## Installation
 ### Prerequisites
 
+You will be running a lot of commands in the terminal to set this up. If you have not done
+this before, we *highly recommend* checking out CP Jamie Flores' great [Linux](https://bytes.usc.edu/cs104/wiki/linux) wiki.
+Specifically, you'll want to look at the [Navigating Directories](https://bytes.usc.edu/cs104/wiki/linux/#navigating-directories) section.
+
 Please make sure that your machine meets the requirements for Docker Desktop, which you will install in [Step 1](#step-1-install-docker):
 
 [Windows host](https://docs.docker.com/docker-for-windows/install/):
@@ -91,6 +95,8 @@ cd docker
 If this command fails with an error like `git command not found`, you need to
 install the git command-line interface (CLI). See [this link](https://git-scm.com/downloads)
 and download the version for your operating system.
+
+To learn more about what the `cd` command does, take a look at the [Linux wiki](https://bytes.usc.edu/cs104/wiki/linux/#navigating-directories)
 
 ### Step 4: Run the setup script
 
@@ -191,8 +197,18 @@ There are three commands you will regularly use:
 - The first, `start`, starts the container up in the background.
   The container should continue running until you shut down your computer, exit docker, or kill the container manually.
 - Next is `shell`, which simply opens a shell inside the virtual machine.
-  This is where you can run standard linux commands, such as `g++` or `valgrind`. You can exit the shell with the key sequence <Ctrl+D> <Ctrl+C>.
+  This is where you can run standard linux commands, such as `g++` or `valgrind`. You can exit the shell with the key sequence <Ctrl+D>
 - The last is `stop`, which manually shuts down the virtual container.
+
+
+You will use the `ch shell csci104` command to access the Docker container and compile or execute your code and run the
+autograder tests after assignments are graded. Anytime you need to push code to Github, make sure to exit the container.
+This last note deserves some emphasis:
+
+
+> **You should not run any git commands in Docker**. This means you shouldn't
+> run `git pull`, `git push`, `git clone`, etc after running `ch shell csci104`.
+
 
 ### Example
 
@@ -205,7 +221,7 @@ ch start csci104
 # get a shell into the csci104 environment
 ch shell csci104
 
-# exit the shell with key sequence <Ctrl+D> <Ctrl+C>
+# exit the shell with <Ctrl+D> or typing `exit`
 
 # stop the running environment
 ch stop csci104
@@ -215,9 +231,11 @@ ch stop csci104
 
 ### Filepaths in the terminal
 
-For the installation script and when navigating your terminal for the first time,
-you might need to provide a filepath. This represents where on your machine
-a specific folder or file is located.
+For the installation script and when navigating your terminal for the first
+time, you might need to provide a filepath. This represents where on your
+machine a specific folder or file is located. For more about this and
+terminal commands in general, please check out the
+[Linux wiki](https://bytes.usc.edu/cs104/wiki/linux/#navigating-directories).
 
 There are many ways to do this, but this seems like the easiest way for
 people getting used to using their terminal:
