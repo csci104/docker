@@ -21,20 +21,19 @@ Docker is considerably less resource-intensive than installing a full virtual ma
 Instead of needing the facilities for a graphical interface, virtual file system, etc., we can mount any directory of the host machine directly in the container and use a shell to run compilation and debugging.
 Development and file management may be done normally on the local machine.
 
-The rest of this README is a quickstart for more experienced users.
 Feel free to read through the [wiki](https://github.com/csci104/docker/wiki) for **a more in-depth guide on [how setup and use Docker](https://github.com/csci104/docker/wiki/Usage)** as well as [how it works](https://github.com/csci104/docker/wiki/Details).
 
 ## Installation
 ### Prerequisites
 
-Below are the system requirements for Docker Desktop:
+Please make sure that your machine meets the requirements for Docker Desktop, which you will install in [Step 1](#step-1-install-docker):
 
 [Windows host](https://docs.docker.com/docker-for-windows/install/):
 
 - Windows 10 64-bit: (Build 18362 or later)
   - WSL2 container backend
 
-> **Optional:** If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/) though this is not required.
+> **Optional:** If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/).
 
 [Mac host](https://docs.docker.com/docker-for-mac/install/):
 
@@ -49,7 +48,7 @@ Below are the system requirements for Docker Desktop:
     here](https://osxdaily.com/2020/11/18/how-run-homebrew-x86-terminal-apple-silicon-mac/)
     to run Terminal through Rosetta.
 
-> **Note:** gdb may not work on Apple Silicon per [this Github issue](https://github.com/docker/for-mac/issues/5191#issue-775028988).
+> **Note:** The gdb debugger used in CSCI104 may not work on Apple Silicon per [this Github issue](https://github.com/docker/for-mac/issues/5191#issue-775028988).
 
 ### Step 0: Install WSL2 (Windows only)
 
@@ -64,28 +63,42 @@ Follow the instructions below to install WSL2 on your machine: [Windows Subsyste
 
 Install Docker Desktop from [the website](https://www.docker.com/products/docker-desktop).
 
-### Step 2: Clone this repository
+### Step 2: Create a working directory
 
-After setting up Docker you need to clone this repository which contains
+We highly recommend that you create a dedicated working directory to clone CSCI 104
+repositories and to do your programming assignments.
+
+Create a `csci104` folder on your machine. Next, you'll need to open a terminal into
+the folder to run the remaining commands in the setup.
+
+Open up a Terminal (macOS) or Powershell/Windows Terminal (Windows). Next, navigate
+to your `csci104` folder by typing `cd ` (notice the space) and dragging the
+`csci104` folder from Finder or File Explorer into the terminal, then pressing enter.
+
+### Step 3: Clone this repository
+
+After setting up Docker, you need to clone this repository which contains
 a setup script for both Windows and Unix-based systems.
 
-You can clone the repository with this command:
+
+Run the commands below to clone the repository and change directories into the new folder:
 
 ```shell
 git clone git@github.com:csci104/docker.git
+cd docker
 ```
 
 If this command fails with an error like `git command not found`, you need to
 install the git command-line interface (CLI). See [this link](https://git-scm.com/downloads) and download
 the package for your operating system.
 
-### Step 3: Run the setup script
+### Step 4: Run the setup script
 
 This repository contains a setup script to install a command-line tool you will
 use to access your Docker containers, pull the CSCI 104 docker image and setup your virtualized environment.
 
-To run the setup script, you need to open a Terminal or Powershell into the `docker` repository you cloned in [Step 2](#step-2-clone-this-repository).
-If you're not sure how to do that, see the [Getting a Filepath](#getting-a-filepath) tip.
+If you followed [Step 3](#step-3-clone-this-repository) properly, you have a terminal open
+in the docker folder. If you're not sure, see the [Filepaths in the Terminal](#filepaths-in-the-terminal) tip.
 
 Now that you're ready to run the setup script, read and follow the instructions
 below corresponding to your operating system:
@@ -98,7 +111,8 @@ On macOS in Terminal, run the respective setup script inside the `docker` folder
 ./unix/setup.sh
 ```
 
-Note: if you're not able to run `ch` after setup, you may need to run `source ~/.zprofile` or `source ~/.bash_profile` depending on your shell.
+> Note: if you're not able to run `ch` after setup, you may need to run `source ~/.zshrc` or `source ~/.bashrc` depending on your default shell. If you don't understand what this means,
+you can safely ignore the comment!
 
 **Windows**
 
@@ -121,13 +135,9 @@ In PowerShell, run this command in the `docker` folder:
 
 If the command above runs successfully, you will be prompted to provide the directory in your local machine you wish to be accessible from the virtual machine.
 
-We highly recommend that you create a specific `csci104` folder where you will clone the required
-repositories and complete your programming assignments for the class.
-
-If you made your `csci104` folder in your home directory, the path will look something like
-this: `/Users/username/csci104` (macOS) or `C:\Users\username\csci104` (Windows).
-
-To get the filepath to this folder, you can drag the `csci104` folder into your terminal from Finder/Explorer. See the [Getting a Filepath](#getting-a-filepath) tip for more help.
+If you followed [Step 2](#step-2-create-a-working-directory), you will drag the
+`csci104` folder you created into your terminal from Finder/File Explorer. See
+the [Filepaths in the Terminal](#filepaths-in-the-terminal) tip for more help.
 
 
 ### Step 5: Verify your installation
@@ -139,7 +149,8 @@ If this fails, try opening up a new terminal and retry the command. If this fail
 ask a CP, post on Piazza, or [create a Github Issue](https://github.com/csci104/docker/issues/new/choose) if you're not in the class but still need help.
 
 Let's check and make sure everything works by running `ch list` in your terminal.
-You should get output like this below:
+You should get output like this below, but don't worry if the filepath in `Volume`
+looks a little different:
 
 **macOS**
 
@@ -163,6 +174,7 @@ Name:   csci104
         CapAdd: SYS_PTRACE
 ```
 
+If you see output something like this, you're all set up! Congrats!
 
 ## Working
 
@@ -201,20 +213,20 @@ ch stop csci104
 
 ## Tips
 
-### Getting a Filepath
+### Filepaths in the terminal
 
 For the installation script and when navigating your terminal for the first time,
-you might need to provide a filepath. This represents "where" on your machine
+you might need to provide a filepath. This represents where on your machine
 a specific folder or file is located.
 
 There are many ways to do this, but this seems like the easiest way for
 people getting used to using their terminal:
 
-1. open Finder (macOS) or Explorer (Windows)
+1. open Finder (macOS) or File Explorer (Windows)
 2. find the folder where you want to go to
 3. drag the path into your terminal to get the path
 
-If you're wanting to change directories like in [Step 2](#step-2-clone-this-repository), you'll type "cd " into your terminal and
+If you're wanting to change directories like in [Step 2](#step-2-clone-this-repository), you'll type `cd ` into your terminal and
 drag the folder in.
 
 If you're running the setup script in [Step 3](#step-3-run-the-setup-script), you will drag your csci104 folder in the terminal
