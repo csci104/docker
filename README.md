@@ -10,6 +10,8 @@
 
 </br>
 
+## Introduction
+
 This repository contains a Dockerfile and a couple of management scripts for creating and using a virtualized Linux container capable of building, running, and debugging C++.
 Using a virtualized container is preferable to a user's local machine because it guarantees consistent compilation and execution of C++ binaries.
 While compilers and tooling may vary between systems, creating a sealed environment from the exact same components every time ensures that code runs the same for graders as it does students.
@@ -22,33 +24,71 @@ Development and file management may be done normally on the local machine.
 The rest of this README is a quickstart for more experienced users.
 Feel free to read through the [wiki](https://github.com/csci104/docker/wiki) for **a more in-depth guide on [how setup and use Docker](https://github.com/csci104/docker/wiki/Usage)** as well as [how it works](https://github.com/csci104/docker/wiki/Details).
 
-## System Requirements
+## Installation
+### Prerequisites
 
 Below are the system requirements for Docker Desktop:
 
 [Windows host](https://docs.docker.com/docker-for-windows/install/):
 
-- Windows 10 64-bit: (Build 15063 or later)
-  - Pro, Enterprise, or Education: using Hyper-V and Containers Windows features
-  - Any Windows 10 version: using WSL2 container backend **(recommended)**
+- Windows 10 64-bit: (Build 18362 or later)
+  - WSL2 container backend
 
-If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/) though this is not required if you use WSL2 for containers.
+> **Optional:** If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/) though this is not required.
 
 [Mac host](https://docs.docker.com/docker-for-mac/install/):
 
-- Mac hardware must be a 2010 or newer model
-- macOS must be version 10.13 or newer
-- 4 GB RAM minimum
+- Intel:
+  - Mac hardware must be a 2010 or newer model
+  - macOS must be version 10.13 or newer
+  - 4 GB RAM minimum
+- Apple Silicon (i.e. M1 chip):
+  - Rosetta emulated terminal
+    - for instructions on how to setup a Rosetta emulated terminal, see
+    [instructions
+    here](https://osxdaily.com/2020/11/18/how-run-homebrew-x86-terminal-apple-silicon-mac/)
+    to run Terminal through Rosetta.
 
-If you are using Apple Silicon, you should run the setup commands in a Rosetta emulation.
-See [instructions here](https://osxdaily.com/2020/11/18/how-run-homebrew-x86-terminal-apple-silicon-mac/) to run Terminal through Rosetta. However,
-be aware that gdb may not work per [this Github issue](https://github.com/docker/for-mac/issues/5191#issue-775028988).
+> **Note:** gdb may not work on Apple Silicon per [this Github issue](https://github.com/docker/for-mac/issues/5191#issue-775028988).
 
-## Setting Up
+### Step 0: Install WSL2 (Windows only)
 
-First, **install Docker** desktop from [the website](https://www.docker.com/products/docker-desktop).
-Once done, **clone this repository**, which contains a setup script for both Windows and Unix-based systems.
-Running it will install a helper CLI (command-line tool), pull the CSCI 104 docker image and setup a virtualized environment.
+If you are using macOS or Linux operating system, you can skip this section.
+If you are running Windows, you must install the Windows Subsystem for Linux 2 (WSL2) before installing Docker.
+
+Follow the instructions below to install WSL2 on your machine: [Windows Subsystem for Linux Installation Guide](https://docs.microsoft.com/windows/wsl/install-win10)
+
+
+### Step 1: Install Docker
+
+
+Install Docker Desktop from [the website](https://www.docker.com/products/docker-desktop).
+
+### Step 2: Clone this repository
+
+After setting up Docker you need to clone this repository which contains
+a setup script for both Windows and Unix-based systems.
+
+You can clone the repository with this command:
+
+```shell
+git clone git@github.com:csci104/docker.git
+```
+
+If this command fails with an error like `git command not found`, you need to
+install the git command-line interface (CLI). See [this link](https://git-scm.com/downloads) and download
+the package for your operating system.
+
+### Step 3: Run the setup script
+
+This repository contains a setup script to install a command-line tool you will
+use to access your Docker containers, pull the CSCI 104 docker image and setup your virtualized environment.
+
+To run the setup script, you need to open a Terminal or Powershell into the `docker` repository you cloned in [Step 2](#step-2-clone-this-repository).
+If you're not sure how to do that, see the [Getting a Filepath](#getting-a-filepath) tip.
+
+Now that you're ready to run the setup script, read and follow the instructions
+below corresponding to your operating system:
 
 **macOS/Linux**
 
@@ -62,7 +102,7 @@ Note: if you're not able to run `ch` after setup, you may need to run `source ~/
 
 **Windows**
 
-On Windows in PowerShell, the process is similar but you must make sure you can run PowerShell scripts:
+On Windows in PowerShell or Windows Terminal, the process is similar but you must make sure you can run PowerShell scripts:
 
 Make sure you run this in an Admin PowerShell:
 
@@ -77,12 +117,52 @@ In PowerShell, run this command in the `docker` folder:
 .\windows\setup
 ```
 
-When prompted, provide the directory in your local machine you wish to be accessible from the virtual machine.
-For example, if you cloned your homework directory to `/Users/username/Documents/hw-username` or `C:\Users\username\Documents\hw-username`, enter that.
-**You must supply the absolute path of the directory you want to access**.
-Something like `cs104/` or `../` is not sufficient, the path must start from `/` on Unix or `C:\` (or whatever disk you're working from) on Windows.
+### Step 4: Set your working directory
 
-Once you've finished answering the prompts and setup script finishes, you should be ready to use `ch` to work with your csci104 environment. Remember that if `ch` isn't available, you may need to run `source ~/.zshrc` or `source ~/.bashrc` on macOS. 
+If the command above runs successfully, you will be prompted to provide the directory in your local machine you wish to be accessible from the virtual machine.
+
+We highly recommend that you create a specific `csci104` folder where you will clone the required
+repositories and complete your programming assignments for the class.
+
+If you made your `csci104` folder in your home directory, the path will look something like
+this: `/Users/username/csci104` (macOS) or `C:\Users\username\csci104` (Windows).
+
+To get the filepath to this folder, you can drag the `csci104` folder into your terminal from Finder/Explorer. See the [Getting a Filepath](#getting-a-filepath) tip for more help.
+
+
+### Step 5: Verify your installation
+
+Once you've finished answering the prompts and setup script finishes, you should be ready to use `ch` to work with your csci104 environment!
+
+> If you're on macOS, try running `source ~/.zshrc` or `source ~/.bashrc` and then run `ch list`.
+If this fails, try opening up a new terminal and retry the command. If this fails, you can
+ask a CP, post on Piazza, or [create a Github Issue](https://github.com/csci104/docker/issues/new/choose) if you're not in the class but still need help.
+
+Let's check and make sure everything works by running `ch list` in your terminal.
+You should get output like this below:
+
+**macOS**
+
+```shell
+$ ch list
+Name:   csci104
+        Image:  usccsci104/docker:20.04
+        Volume: /Users/username/csci104:/work
+        SecOpt: seccomp:unconfined
+        CapAdd: SYS_PTRACE
+```
+
+**Windows**
+
+```powershell
+PS C:\Users\Username> ch list
+Name:   csci104
+        Image:  usccsci104/docker:20.04
+        Volume: C:\Users\Username\csci104:/work
+        SecOpt: seccomp:unconfined
+        CapAdd: SYS_PTRACE
+```
+
 
 ## Working
 
@@ -119,12 +199,32 @@ ch shell csci104
 ch stop csci104
 ```
 
-### Note: Valgrind Suppression
+## Tips
+
+### Getting a Filepath
+
+For the installation script and when navigating your terminal for the first time,
+you might need to provide a filepath. This represents "where" on your machine
+a specific folder or file is located.
+
+There are many ways to do this, but this seems like the easiest way for
+people getting used to using their terminal:
+
+1. open Finder (macOS) or Explorer (Windows)
+2. find the folder where you want to go to
+3. drag the path into your terminal to get the path
+
+If you're wanting to change directories like in [Step 2](#step-2-clone-this-repository), you'll type "cd " into your terminal and
+drag the folder in.
+
+If you're running the setup script in [Step 3](#step-3-run-the-setup-script), you will drag your csci104 folder in the terminal
+when the script asks for a filepath.
+### Valgrind Suppression
 
 To determine the correct valgrind suppression in the future, refer to [this manual](https://wiki.wxwidgets.org/Valgrind_Suppression_File_Howtohttps://wiki.wxwidgets.org/Valgrind_Suppression_File_Howto).
 Running it on a sufficiently complex piece of leak-free code will yield most of the necessary configurations.
 
-### Note: Hypervisor on Windows
+### Hypervisor on Windows
 
 If you plan to using Docker and Virtual Box as a fallback, please be aware of what you will need to do to switch between the two systems. You'll have to toggle the Hypervisor:
 
