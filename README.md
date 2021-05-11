@@ -96,7 +96,7 @@ If this command fails with an error like `git command not found`, you need to
 install the git command-line interface (CLI). See [this link](https://git-scm.com/downloads)
 and download the version for your operating system.
 
-To learn more about what the `cd` command does, take a look at the [Linux wiki](https://bytes.usc.edu/cs104/wiki/linux/#navigating-directories)
+The `git clone` command downloads a repository (think of it as a folder) from the Github URL. To learn more about what the `cd` command does, take a look at the [Linux wiki](https://bytes.usc.edu/cs104/wiki/linux/#navigating-directories)
 
 ### Step 4: Run the setup script
 
@@ -206,7 +206,7 @@ autograder tests after assignments are graded. Anytime you need to push code to 
 This last note deserves some emphasis:
 
 
-> **You should not run any git commands in Docker**. This means you shouldn't
+> **You should not run any git commands in Docker**. This means you should not
 > run `git pull`, `git push`, `git clone`, etc after running `ch shell csci104`.
 
 
