@@ -131,7 +131,7 @@ In PowerShell, run this command in the `docker` folder:
 .\windows\setup
 ```
 
-### Step 4: Set your working directory
+### Step 5: Set your working directory
 
 If the command above runs successfully, you will be prompted to provide the directory in your local machine you wish to be accessible from the virtual machine.
 
@@ -226,10 +226,10 @@ people getting used to using their terminal:
 2. find the folder where you want to go to
 3. drag the path into your terminal to get the path
 
-If you're wanting to change directories like in [Step 2](#step-2-clone-this-repository), you'll type `cd ` into your terminal and
+If you're wanting to change directories like in [Step 3](#step-3-clone-this-repository), you'll type `cd ` into your terminal and
 drag the folder in.
 
-If you're running the setup script in [Step 3](#step-3-run-the-setup-script), you will drag your csci104 folder in the terminal
+If you're running the setup script in [Step 4](#step-4-run-the-setup-script), you will drag your csci104 folder in the terminal
 when the script asks for a filepath.
 ### Valgrind Suppression
 
