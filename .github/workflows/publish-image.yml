@@ -30,7 +30,7 @@ jobs:
           file: ./Dockerfile
           pull: true
           push: true
-          tags: usccsci104/docker:latest
+          tags: usccsci104/docker:20.04
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
