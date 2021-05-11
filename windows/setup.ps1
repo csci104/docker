@@ -33,4 +33,4 @@ Write-Output "Mount point set, this can be changed later by editing $conf_path"
 
 # Create csci104 environment with ch CLI
 Write-Output "Creating csci104 environment..."
-ch create csci104 --image usccsci104/docker:latest --shell /bin/bash --volume ("{0}:/work" -f $work) --security-opt seccomp:unconfined --cap-add SYS_PTRACE --replace
+ch create csci104 --image usccsci104/docker:20.04 --shell /bin/bash --volume ("{0}:/work" -f $work) --security-opt seccomp:unconfined --cap-add SYS_PTRACE --replace
