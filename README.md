@@ -73,7 +73,7 @@ the folder to run the remaining commands in the setup.
 
 Open up a Terminal (macOS) or Powershell/Windows Terminal (Windows). Next, navigate
 to your `csci104` folder by typing `cd ` (notice the space) and dragging the
-`csci104` folder from Finder or File Explorer into the terminal, then pressing enter.
+`csci104` folder from Finder or File Explorer into the terminal, then press enter.
 
 ### Step 3: Clone this repository
 
@@ -89,8 +89,8 @@ cd docker
 ```
 
 If this command fails with an error like `git command not found`, you need to
-install the git command-line interface (CLI). See [this link](https://git-scm.com/downloads) and download
-the package for your operating system.
+install the git command-line interface (CLI). See [this link](https://git-scm.com/downloads)
+and download the version for your operating system.
 
 ### Step 4: Run the setup script
 
@@ -111,8 +111,8 @@ On macOS in Terminal, run the respective setup script inside the `docker` folder
 ./unix/setup.sh
 ```
 
-> Note: if you're not able to run `ch` after setup, you may need to run `source ~/.zshrc` or `source ~/.bashrc` depending on your default shell. If you don't understand what this means,
-you can safely ignore the comment!
+> Note: if you're not able to run `ch` after setup, you may need to run `source ~/.zshrc` or `source ~/.bashrc`
+> depending on your default shell. If you don't understand what this means, you can safely ignore the comment!
 
 **Windows**
 
