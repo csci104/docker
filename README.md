@@ -32,14 +32,14 @@ Specifically, you'll want to look at the [Navigating Directories](https://bytes.
 
 Please make sure that your machine meets the requirements for Docker Desktop, which you will install in [Step 1](#step-1-install-docker):
 
-[Windows host](https://docs.docker.com/docker-for-windows/install/):
+<a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows host:</a>
 
 - Windows 10 64-bit: (Build 18362 or later)
   - WSL2 container backend
 
-> **Optional:** If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education [here](https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/).
+> **Optional:** If you are using Windows 10 Home, you can obtain a "free" license for Windows 10 Education <a href="https://viterbiit.usc.edu/services/hardware-software/microsoft-imagine-downloads/">here</a>.
 
-[Mac host](https://docs.docker.com/docker-for-mac/install/):
+<a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac host:</a>
 
 - Intel:
   - Mac hardware must be a 2010 or newer model
@@ -48,8 +48,7 @@ Please make sure that your machine meets the requirements for Docker Desktop, wh
 - Apple Silicon (i.e. M1 chip):
   - Rosetta emulated terminal
     - for instructions on how to setup a Rosetta emulated terminal, see
-    [instructions
-    here](https://osxdaily.com/2020/11/18/how-run-homebrew-x86-terminal-apple-silicon-mac/)
+    <a href="https://osxdaily.com/2020/11/18/how-run-homebrew-x86-terminal-apple-silicon-mac/" target="_blank">instructions here</a>
     to run Terminal through Rosetta.
 
 > **Note:** The gdb debugger used in CSCI104 may not work on Apple Silicon per [this Github issue](https://github.com/docker/for-mac/issues/5191#issue-775028988).
@@ -59,13 +58,18 @@ Please make sure that your machine meets the requirements for Docker Desktop, wh
 If you are using macOS or Linux operating system, you can skip this section.
 If you are running Windows, you must install the Windows Subsystem for Linux 2 (WSL2) before installing Docker.
 
-Follow the instructions below to install WSL2 on your machine: [Windows Subsystem for Linux Installation Guide](https://docs.microsoft.com/windows/wsl/install-win10)
+Follow the instructions below to install WSL2 on your machine: <a href="https://docs.microsoft.com/windows/wsl/install-win10" target="_blank">Windows Subsystem for Linux Installation Guide</a>
 
 
 ### Step 1: Install Docker
 
 
-Install Docker Desktop from [the website](https://www.docker.com/products/docker-desktop).
+Install Docker Desktop from <a href="https://www.docker.com/products/docker-desktop" target="_blank">the website</a>
+
+When the installation has finished, open up Docker Desktop to make sure it's running. If Docker is running
+properly, you will see a green icon in the lower left side.
+
+If you encounter errors in this process, please see the <a href="https://github.com/csci104/docker/wiki/Troubleshooting" target="_blank">Troubleshooting wiki</a>.
 
 ### Step 2: Create a working directory
 
@@ -93,10 +97,10 @@ cd docker
 ```
 
 If this command fails with an error like `git command not found`, you need to
-install the git command-line interface (CLI). See [this link](https://git-scm.com/downloads)
+install the git command-line interface (CLI). See <a href="https://git-scm.com/downloads" target="_blank">this link</a>
 and download the version for your operating system.
 
-The `git clone` command downloads a repository (think of it as a folder) from the Github URL. To learn more about what the `cd` command does, take a look at the [Linux wiki](https://bytes.usc.edu/cs104/wiki/linux/#navigating-directories)
+The `git clone` command downloads a repository (think of it as a folder) from the Github URL. To learn more about what the `cd` command does, take a look at the <a href="https://bytes.usc.edu/cs104/wiki/linux/#navigating-directories" target="_blank">Linux wiki</a>.
 
 ### Step 4: Run the setup script
 
@@ -152,7 +156,8 @@ Once you've finished answering the prompts and setup script finishes, you should
 
 > If you're on macOS, try running `source ~/.zshrc` or `source ~/.bashrc` and then run `ch list`.
 If this fails, try opening up a new terminal and retry the command. If this fails, you can
-ask a CP, post on Piazza, or [create a Github Issue](https://github.com/csci104/docker/issues/new/choose) if you're not in the class but still need help.
+ask a CP, post on Piazza, or <a href="https://github.com/csci104/docker/issues/new/choose" target="_blank">create a Github Issue</a> if
+you're not in the class but still need help.
 
 Let's check and make sure everything works by running `ch list` in your terminal.
 You should get output like this below, but don't worry if the filepath in `Volume`
@@ -212,7 +217,7 @@ This last note deserves some emphasis:
 
 ### Example
 
-See full documentation for `ch` [here](https://github.com/camerondurham/ch).
+See full documentation for `ch` <a href="https://github.com/camerondurham/ch" target="_blank">here</a>.
 
 ```bash
 # start your environment
