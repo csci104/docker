@@ -24,6 +24,15 @@ Development and file management may be done normally on the local machine.
 Feel free to read through the [wiki](https://github.com/csci104/docker/wiki) for **a more in-depth guide on [how setup and use Docker](https://github.com/csci104/docker/wiki/Usage)** as well as [how it works](https://github.com/csci104/docker/wiki/Details).
 
 ## Installation
+
+This is a fairly long wiki in order to be as clear as possible. Feel free to jump around using the Table of Contents icon on the upper left side of this README:
+
+<div align="center">
+  <img width="300px" alt="screenshot of github table of contents list" src="https://user-images.githubusercontent.com/17013462/118037619-f411cf80-b322-11eb-8278-437177650ed5.png" />
+</div>
+
+
+
 ### Prerequisites
 
 You will be running a lot of commands in the terminal to set this up. If you have not done
@@ -69,7 +78,10 @@ Install Docker Desktop from <a href="https://www.docker.com/products/docker-desk
 When the installation has finished, open up Docker Desktop to make sure it's running. If Docker is running
 properly, you will see a green icon in the lower left side, like the image below:
 
-<img src="https://user-images.githubusercontent.com/17013462/117899471-08e75800-b27c-11eb-88f4-72c8c4586630.png" width="650px">
+<div align="center">
+  <img width="650px" src="https://user-images.githubusercontent.com/17013462/117899471-08e75800-b27c-11eb-88f4-72c8c4586630.png" alt="screenshot of Docker Desktop with a green icon on the lower left side">
+</div>
+
 
 
 If you encounter errors in this process, please see the <a href="https://github.com/csci104/docker/wiki/Troubleshooting" target="_blank">Troubleshooting wiki</a>.
