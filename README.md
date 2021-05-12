@@ -67,7 +67,10 @@ Follow the instructions below to install WSL2 on your machine: <a href="https://
 Install Docker Desktop from <a href="https://www.docker.com/products/docker-desktop" target="_blank">the website</a>
 
 When the installation has finished, open up Docker Desktop to make sure it's running. If Docker is running
-properly, you will see a green icon in the lower left side.
+properly, you will see a green icon in the lower left side, like the image below:
+
+<img src="https://user-images.githubusercontent.com/17013462/117899471-08e75800-b27c-11eb-88f4-72c8c4586630.png" width="650px">
+
 
 If you encounter errors in this process, please see the <a href="https://github.com/csci104/docker/wiki/Troubleshooting" target="_blank">Troubleshooting wiki</a>.
 
