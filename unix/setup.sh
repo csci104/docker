@@ -32,7 +32,7 @@ echo "Mount point set, this can be changed later by editing $HOME/.ch.yaml..."
 
 # Create csci104 environment with ch CLI
 echo "Creating csci104 environment..."
-ch create csci104 --image usccsci104/docker:20.04 --shell /bin/bash --volume "$work:/work" --security-opt seccomp:unconfined --cap-add SYS_PTRACE --replace
+ch create csci104 --image usccsci104/docker:20.04 --shell /bin/bash --volume "$work:/work" --security-opt seccomp:unconfined --cap-add SYS_PTRACE --privileged --replace
 
 echo "Done!"
 
