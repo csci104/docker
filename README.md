@@ -229,6 +229,11 @@ This last note deserves some emphasis:
 > **You should not run any git commands in Docker**. This means you should not
 > run `git pull`, `git push`, `git clone`, etc after running `ch shell csci104`.
 
+To Windows users:
+
+> You should only use the `ch shell csci104` commands in Powershell or Windows Terminal on Windows.
+> If you use GitBash, Cygwin, or another terminal emulator, you will unexpectedly exit `gdb` debugging
+> sessions when you run `ctrl-c`.
 
 ### Example
 
@@ -245,6 +250,9 @@ ch shell csci104
 
 # stop the running environment
 ch stop csci104
+
+# print the running environments
+ch running
 ```
 
 ## Tips
