@@ -1,6 +1,21 @@
 #!/bin/bash
 repository="camerondurham/ch"
 
+function precheck_failed_msg() {
+  echo -e "\nThis script requires unzip or gunzip installed to work"
+  echo -e "please retry after installing unzip (macOS) or gunzip (Linux)\n"
+  echo -e "macOS (with homebrew):\n    brew install unzip "
+  echo -e "Linux (Debian-based, i.e. ubuntu):\n    sudo apt install unzip"
+  echo -e "Linux (Arch, Manjaro):\n    sudo pacman -S unzip"
+  exit 1
+}
+
+function precheck() {
+  which unzip || {
+    precheck_failed_msg
+  }
+}
+
 function get_latest_release() {
   curl --silent "https://api.github.com/repos/$1/releases/latest" |   # Get latest release from GitHub api
   grep '"tag_name":' |                                                # Get tag line
@@ -12,15 +27,15 @@ function get_release_package() {
   download_path=$2
   filename=$3
   cd "$download_path" || exit 1
-  if ! curl -LO "$download_url"; then
+  curl -LO "$download_url" || {
     echo Download failed...
     exit 1
-  fi
+  }
 
-  if ! unzip -o "$filename"; then
+  unzip -o "$filename" || {
     echo Unzip failed...
     exit 1
-  fi
+  }
 }
 
 function get_release_url() {
@@ -61,8 +76,9 @@ function add_to_path() {
   fi
 }
 
-version=$(get_latest_release $repository)
+precheck
 
+version=$(get_latest_release $repository)
 zip_filename=
 if [ "$(uname)" = "Linux" ]; then
   zip_filename="ch-linux-amd64.zip"
