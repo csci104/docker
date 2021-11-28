@@ -37,8 +37,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: usccsci104/docker-multiarch:20.04
-          cache-from: type=registry,ref=usccsci104/docker-multiarch:20.04
-          cache-to: type=inline
+          cache-from: type=registry,ref=usccsci104/docker-multiarch:buildcache
+          cache-to: type=registry,ref=usccsci104/docker-multiarch:buildcache,mode=max
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
