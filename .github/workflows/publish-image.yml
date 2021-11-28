@@ -9,11 +9,14 @@ on:
 jobs:
   push_to_registry:
     name: Push image to Docker Hub
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       -
         name: Check out the repo
         uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
