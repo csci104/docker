@@ -62,13 +62,8 @@ Please make sure that your machine meets the requirements for Docker Desktop, wh
   - Mac hardware must be a 2010 or newer model
   - macOS must be version 10.13 or newer
   - 4 GB RAM minimum
-- Apple Silicon (i.e. M1 chip):
-  - Rosetta emulated terminal
-    - for instructions on how to setup a Rosetta emulated terminal, see
-    <a href="https://osxdaily.com/2020/11/18/how-run-homebrew-x86-terminal-apple-silicon-mac/" target="_blank">instructions here</a>
-    to run Terminal through Rosetta.
-
-> **Note:** The gdb debugger used in CSCI104 may not work on Apple Silicon per [this Github issue](https://github.com/docker/for-mac/issues/5191#issue-775028988).
+- Apple Silicon (e.g. M1, M1X chip):
+  - *note:* please **DO NOT** use a Rosetta-emulated terminal as arm64 architecture is fully supported
 
 ### Step 0: Install WSL2 (Windows only)
 
