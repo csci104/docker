@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - multi-arch
 
 jobs:
   push_to_registry:
@@ -36,9 +35,9 @@ jobs:
               linux/arm64
           file: ./Dockerfile
           push: true
-          tags: usccsci104/docker-multiarch:20.04
-          cache-from: type=registry,ref=usccsci104/docker-multiarch:buildcache
-          cache-to: type=registry,ref=usccsci104/docker-multiarch:buildcache,mode=max
+          tags: usccsci104/docker:20.04
+          cache-from: type=registry,ref=usccsci104/docker:buildcache
+          cache-to: type=registry,ref=usccsci104/docker:buildcache,mode=max
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
