@@ -79,13 +79,20 @@ function add_to_path() {
 precheck
 
 version=$(get_latest_release $repository)
+architecture=$(uname -m)
+operating_system=$(uname)
 zip_filename=
-if [ "$(uname)" = "Linux" ]; then
-  zip_filename="ch-linux-amd64.zip"
-elif [ "$(uname -m)" = "arm64" ]; then
-  zip_filename="ch-darwin-arm64.zip"
+if [ "$operating_system" = "Linux" ] && { [ "$architecture" = "x86_64" ] || [ "$architecture" = "x86-64" ]; } then
+    zip_filename="ch-linux-amd64.zip"
+elif [ "$operating_system" = "Linux" ] && [ "$architecture" = "aarch64" ]; then
+    # aarch64 is supposedly the same as arm64 and containerd treats them the
+    # same so we should be good
+    # https://stackoverflow.com/a/47274698/4676641
+    zip_filename="ch-linux-arm64.zip"
+elif [ "$operating_system" = "Darwin" ] && [ "$architecture" = "arm64" ]; then
+    zip_filename="ch-darwin-arm64.zip"
 else
-  zip_filename="ch-darwin-amd64.zip"
+    zip_filename="ch-darwin-amd64.zip"
 fi
 
 release_url=$(get_release_url "$repository" "$version" "$zip_filename")
@@ -100,3 +107,4 @@ if ! echo "$PATH" | grep ${zip_filename%.*} > /dev/null ; then
 fi
 
 echo "Done! Try using ch with: ch --help"
+
