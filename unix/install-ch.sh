@@ -82,6 +82,8 @@ version=$(get_latest_release $repository)
 zip_filename=
 if [ "$(uname)" = "Linux" ]; then
   zip_filename="ch-linux-amd64.zip"
+elif [ "$(uname -m)" = "arm64" ]; then
+  zip_filename="ch-darwin-arm64.zip"
 else
   zip_filename="ch-darwin-amd64.zip"
 fi
