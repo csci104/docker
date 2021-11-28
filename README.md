@@ -62,8 +62,14 @@ Please make sure that your machine meets the requirements for Docker Desktop, wh
   - Mac hardware must be a 2010 or newer model
   - macOS must be version 10.13 or newer
   - 4 GB RAM minimum
-- Apple Silicon (e.g. M1, M1X chip):
-  - *note:* please **DO NOT** use a Rosetta-emulated terminal as arm64 architecture is fully supported
+- Apple Silicon (e.g. M1, M1X, ...):
+  - *note:* Please use a standard "native" terminal. **DO NOT** use a Rosetta-emulated terminal, gdb and valgrind [will not work with emulation](https://github.com/docker/for-mac/issues/5191#issuecomment-834154431).
+
+Linux host:
+
+- x86_64/amd64: tested on Ubuntu 20.04, Arch Linux
+
+- aarch64 (e.g. Raspberry Pi): 64-bit OS: tested on Ubuntu Server 21.10
 
 ### Step 0: Install WSL2 (Windows only)
 
