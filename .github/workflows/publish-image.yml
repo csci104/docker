@@ -35,9 +35,10 @@ jobs:
               linux/amd64
               linux/arm64
           file: ./Dockerfile
-          pull: true
           push: true
           tags: usccsci104/docker-multiarch:20.04
+          cache-from: type=registry,ref=usccsci104/docker-multiarch:20.04
+          cache-to: type=inline
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
