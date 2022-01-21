@@ -41,7 +41,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && python3.9 -m pip install curricula curricula-grade curricula-grade-cpp curricula-compile curricula-format watchdog
 
 # Install xmltodict for CMake tests
-python3 -m pip install xmltodict
+RUN python3 -m pip install xmltodict
 
 VOLUME ["/work"]
 WORKDIR /work
