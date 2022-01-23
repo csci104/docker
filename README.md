@@ -1,19 +1,11 @@
 # CSCI 104 Docker
 
-<a href="https://hub.docker.com/repository/docker/usccsci104/docker">
-  <img align="left" src="https://img.shields.io/docker/image-size/usccsci104/docker?style=flat-square" />
+<a>
+  <img align="left" alt="Supported Platforms" src="https://img.shields.io/badge/buildx%20platforms-amd64%2C%20arm64-blue">
 </a>
 
 <a href="https://hub.docker.com/repository/docker/usccsci104/docker">
   <img align="left" src="https://img.shields.io/docker/pulls/usccsci104/docker" />
-</a>
-
-<a>
-  <img align="left" alt="Docker Image Version (latest semver)" src="https://img.shields.io/docker/v/usccsci104/docker">
-</a>
-
-<a>
-  <img align="left" alt="Supported Platforms" src="https://img.shields.io/badge/buildx%20platforms-amd64%2C%20arm64-blue">
 </a>
 
 </br>
