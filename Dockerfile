@@ -37,8 +37,10 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
         acl \
         python3.9 \
         python3.9-dev \
-        python3-pip \
-    && python3.9 -m pip install curricula curricula-grade curricula-grade-cpp curricula-compile curricula-format watchdog
+        python3-pip
+
+# Removed while we're doing CMake grading
+# && python3.9 -m pip install curricula curricula-grade curricula-grade-cpp curricula-compile curricula-format watchdog
 
 # Install xmltodict for CMake tests
 RUN python3 -m pip install xmltodict
