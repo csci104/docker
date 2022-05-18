@@ -108,7 +108,7 @@ a setup script for both Windows and Unix-based systems.
 Run the commands below to clone the repository and change directories into the new folder:
 
 ```shell
-git clone git@github.com:csci104/docker.git
+git clone https://github.com/csci104/docker.git
 cd docker
 ```
 
