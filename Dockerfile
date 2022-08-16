@@ -19,7 +19,9 @@ RUN apt-get update && apt-get install -y \
     llvm \
     libgtest-dev \
     software-properties-common \
-    cmake
+    cmake \
+    curl \
+    wget
 
 # GTEST installation for labs
 WORKDIR /usr/src/gtest
