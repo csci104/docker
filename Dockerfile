@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     cmake \
     curl \
-    java \
+    default-jre \
     pkg-config \
     wget
 
