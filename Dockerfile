@@ -4,6 +4,11 @@ FROM ubuntu:20.04
 COPY files/root/* /root/
 COPY files/bin/* /bin/
 
+# tzdata will stall autobuild of docker image
+# this fixes that
+ENV TZ=US/Pacific
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Make sure line endings are Unix
 # This changes nothing if core.autocrlf is set to input
 RUN sed -i 's/\r$//' /root/.bashrc
