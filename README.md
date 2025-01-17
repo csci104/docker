@@ -166,7 +166,7 @@ If you followed [Step 2](#step-2-create-a-working-directory), you will drag the
 the [Filepaths in the Terminal](#filepaths-in-the-terminal) tip for more help.
 
 
-### Step 5: Verify your installation
+### Step 6: Verify your installation
 
 Once you've finished answering the prompts and setup script finishes, you should be ready to use `ch` to work with your csci104 environment!
 
